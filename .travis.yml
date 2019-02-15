@@ -1,5 +1,12 @@
- language: node_js
- node_js: node
- cache:
-   directories:
-     - node_modules
+language: node_js
+node_js: node
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: tP231derQHhWqJ8y3COfATpM9FLN02irh9xVh/r8WCntdRNRD2O9gPMHBLKfVrXpk5dgN7586wFw5kGdp53f3FVRMfEfzn1xte1nWIHvIWhe186XuHm6tqMNi2S6FTFI3+qc0mDkiVh55AflpFgvoDNSwM2K0KU5zE8MJDDZrzvUqGi8iLVwqLGep0j5Oq46k5FWXwzfOSdTV2fzxxAiy5AuGkvg23SjWyqEUilFqTvEEEf8q8CfyqIY3FdTFlloTSZ6vr8C1EfTZfjwGz9gtMVawvjoREbpW2zrYjRyHYkb2viWX6g/kmLnG8NJKUS4eXIdnitwpgMgp9j8rNiJhyqDW7KnhqNHLd3jVOsGFOqvnwWPPHuUViokUr+/t1m4TLppMugsWrIxPrRMebP0bn5X0EEg9EFlrMuEQsC9HzGzv1SrcUsjlDFkqZIFhV0+Tb2KkroqfiYRuOocAmzQ5ohQSgGkf5x5PTFcy6MXbAdkVeFijps4CMvsafuYSnlM78cGNNFttsbxQ9zbOwBfYKiwfvn9XZILCcwCapKpp+kviSEqdI6mWUJvzolZhFH43BdEKwID2Bn0yW1bJbBZMBmyJpQ6mf0NWyj7RuM7Kz5CdGXhq2BGq0ZZItbOjdBnaZtopqI6GOzC411NYdi4djhwXRhhw8MlMmFJxC3B91s=
+  app: calm-plateau-78032
+  on:
+    repo: melfers/restaurant-list-app-react-capstone
