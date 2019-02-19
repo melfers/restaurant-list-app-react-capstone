@@ -58,6 +58,7 @@ body {
     font-size: 20px;
     color: #444;
     text-align: center;
+    padding-bottom: 60px;
 }
 
 section {
@@ -76,6 +77,10 @@ ul li {
 
 a {
 text-decoration: none;
+}
+
+p {
+    font-size: 18px;
 }
 
 header {
@@ -166,6 +171,11 @@ button, input[type=submit] {
     margin: 0;
 }
 
+#main-nav input[type=text] {
+    padding: 5px;
+    font-family: 'Quicksand', sans-serif;
+}
+
 #main-nav img {
     height: 35px;
     padding-top: 7px;
@@ -186,7 +196,7 @@ button, input[type=submit] {
     color: #444554;
 }
 
-#all-lists li {
+.lists li {
     display: block;
     font-size: 35px;
     text-align: left;
@@ -194,6 +204,7 @@ button, input[type=submit] {
     margin-bottom: 10px;
     padding: 15px;
     border: .5px solid lightgrey;
+    height: 135px;
 }
 
 #add-list-form input {
@@ -201,15 +212,56 @@ button, input[type=submit] {
     margin: 15px auto;
 }
 
-#individual-list li {
-    display: block;
-    font-size: 30px;
-    text-align: left;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 15px;
-    border: .5px solid lightgrey;
+.restaurant-card img {
+    height: 105px;
+    border-radius: 5px;
+    float: left;
+    margin-right: 20px;
 }
+
+.restaurant-card p {
+    padding: 10px;
+}
+
+.individual-restaurant-img {
+    height: 200px;
+}
+
+.back-button {
+    height: 30px;
+    float: left;
+}
+
+.save-button {
+    display: block;
+    margin: 0 auto !important;
+}
+
+.edit-restaurant-info {
+    margin: 10px;
+}
+
+textarea {
+    width: 60%;
+    height: 50px;
+    border: .5px lightgrey solid;
+    border-radius: 3px;
+}
+
+#profile-img {
+    height: 100px;
+}
+
+select {
+    height: 40px;
+    border: .5px solid lightgray;
+    border-radius: 5px;
+    margin: 15px;
+    width: 125px;
+    font-size: 15px;
+}
+
+
 
 
 

@@ -23,14 +23,14 @@
       <span class="header-letters"> M</span>
     </header>
     <main role="main">
-      <section id="landing-page" class="hidden">
+      <section id="landing-page">
         <h1 id="landing-header">Nom List</h1>
         <h4>An app that helps you track and rate restaurant visits</h4>
         <img src="images/donut.png" id="main-donut">
         <button>Log In</button>
         <button>Sign Up</button>
       </section>
-      <section id="login-page" class="hidden">
+      <section id="login-page">
         <div id="login-header">
           <h1 class="second-header">N  </h1>
           <img src="images/donut.png" class="sub-donut">
@@ -49,7 +49,7 @@
           <input type="submit">
         </form>
       </section>
-      <section id="signup-page" class="hidden">
+      <section id="signup-page">
         <h2>Sign Up</h2>
         <form>
           <input type="text" placeholder="  Name">
@@ -62,16 +62,20 @@
           </div>
         </form>
       </section>
-      <section id="all-lists-page" class="hidden">
-        <ul id="all-lists">
-          <li>To Visit</li>
+      <section id="all-lists-page">
+        <ul class="lists">
+          <li class="restaurant-card">
+              <img src="images/stock-donut.jpg">
+              <h2>To Visit</h2>
+              <p>Places on my bucket list</p>
+          </li>
           <li>Visited</li>
           <li>Chinese</li>
           <li>Birthday Dinner</li>
           <li>Favorites</li>
         </ul>
       </section>
-      <section id="add-list-page" class="hidden">
+      <section id="add-list-page">
         <form id="add-list-form">
           <legend>Create a list:</legend>
           <input type="text" placeholder="  Name" required>
@@ -80,66 +84,81 @@
         </form>
       </section>
       <section id="individual-list-page">
-        <h2>[Individual List Name]</h2>
-        <ul id="individual-list">
-            <li>Restaurant 1</li>
-            <li>Restaurant 2</li>
-            <li>Restaurant 3</li>
-            <li>Restaurant 4</li>
-            <li>Restaurant 5</li>
+        <h2>Best Donut Shops</h2>
+        <ul class="lists">
+            <li class="restaurant-card">
+              <img src="images/stock-donut.jpg">
+              <h2>Bob's Donuts</h2>
+              <p>Breakfast  |  Rating: 4.5</p>
+            </li>
+            <li class="restaurant-card">Restaurant 2</li>
+            <li class="restaurant-card">Restaurant 3</li>
+            <li class="restaurant-card">Restaurant 4</li>
+            <li class="restaurant-card">Restaurant 5</li>
         </ul>
       </section>
-      <section id="individual-restaurant-page" class="hidden">
-        <button>Back</button>
-        <h1>Restaurant Name</h1>
-        <div id="img-placeholder">[image placeholder]</div>
-          <p>Address:</p>
-          <p>Phone:</p>
+      <section id="individual-restaurant-page">
+        <img src="images/back-arrow.png" class="back-button">
+        <h2>Bob's Donuts</h2>
+        <div id="img-placeholder">
+          <img src="images/stock-donut.jpg" class="individual-restaurant-img">
+        </div>
+          <p>1822 South Van Ness Ave.</p>
+          <p>415-960-3293</p>
           <p>Hours:</p>
           <form>
-          <div>
-              <label for="select">Add to list:</label>
-              <select>
-                <option value="visited">Visited</option>
-                <option value="toVisit">To Visit</option>
-              </select>
+            <div class="edit-restaurant-info">
+                <label for="select">Add to list:</label>
+                <select>
+                  <option value="visited">Visited</option>
+                  <option value="toVisit">To Visit</option>
+                </select>
             </div>
-              <input type="text" placeholder="  Notes">
-            <div>
-              <label for="rating">Rating:</label>
-              <select>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-            </div>
-            <input type="submit">
+            <div class="edit-restaurant-info">
+                <label for="rating">Rating:</label>
+                <select>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+            <textarea placeholder="  Notes" class="edit-restaurant-info"></textarea>
+            <input type="submit" value="Save" class="save-button">
           </form>
       </section>
-      <section id="search-page" class="hidden">
-        <input type="text" placeholder="  Search">
-        <ul>
-          <li>Restaurant 1</li>
+      <section id="search-page">
+        <label for="search">Search:</label>
+        <input type="text">
+        <ul class="lists">
+          <li class="restaurant-card">
+              <img src="images/stock-donut.jpg">
+              <h2>Bob's Donuts</h2>
+              <p>Breakfast  |  Rating: 4.5</p>
+          </li>
           <li>Restaurant 2</li>
           <li>Restaurant 3</li>
           <li>Restaurant 4</li>
           <li>Restaurant 5</li>
         </ul>
       </section>
-      <section id="profile-page" class="hidden">
-        <div>[img placeholder]</div>
+      <section id="profile-page">
+        <div>
+          <img src="images/user.png" id="profile-img">
+        </div>
         <h2>Molly</h2>
-        <label for="select">Select City:</label>
+        <p>You've visited 48 restaurants</p>
+        <form>
+          <label for="select">Select City:</label>
             <select>
               <option value="sf">San Francisco</option>
               <option value="ny">New York</option>
               <option value="chi">Chicago</option>
               <option value="la">Los Angeles</option>
             </select>
-        <p>You've visited 48 restaurants</p>
-        <label>Invite a fellow foodie:</label>
-        <input type="text">
+          <input type="submit" value="Save" class="save-button">
+        </form>
+        
       </section>
       <nav role="navigation" id="bottom-nav">
         <ul id="main-nav">
