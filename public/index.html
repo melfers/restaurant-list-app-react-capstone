@@ -3,8 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
     <!--
       Notice the use of %PUBLIC_URL% in the tag above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -14,19 +12,142 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Hot or Cold</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Coiny|Quicksand" rel="stylesheet">
+    <title>Nom List - A List-Making App for Restaurants</title>
   </head>
   <body>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start`.
-      To create a production bundle, use `npm run build`.
-    -->
+    <header role="banner">
+      <span class="header-letters">N </span>
+      <img src="images/donut.png" id="header-donut">
+      <span class="header-letters"> M</span>
+    </header>
+    <main role="main">
+      <section id="landing-page" class="hidden">
+        <h1 id="landing-header">Nom List</h1>
+        <h4>An app that helps you track and rate restaurant visits</h4>
+        <img src="images/donut.png" id="main-donut">
+        <button>Log In</button>
+        <button>Sign Up</button>
+      </section>
+      <section id="login-page" class="hidden">
+        <div id="login-header">
+          <h1 class="second-header">N  </h1>
+          <img src="images/donut.png" class="sub-donut">
+          <h1 class="second-header">  M</h1>
+        </div>
+        <h2>Log In</h2>
+        <form>
+          <div>
+            <label for="username"></label>
+            <input type="text" placeholder="  Username">
+          </div>
+          <div>
+            <label for="password"></label>
+            <input type="text" placeholder="  Password">
+          </div>
+          <input type="submit">
+        </form>
+      </section>
+      <section id="signup-page" class="hidden">
+        <h2>Sign Up</h2>
+        <form>
+          <input type="text" placeholder="  Name">
+          <input type="text" placeholder="  Email">
+          <input type="text" placeholder="  Password">
+          <input type="text" placeholder="  Re-enter password">
+          <div>
+            <button>Back</button>
+            <input type="submit">
+          </div>
+        </form>
+      </section>
+      <section id="all-lists-page" class="hidden">
+        <ul id="all-lists">
+          <li>To Visit</li>
+          <li>Visited</li>
+          <li>Chinese</li>
+          <li>Birthday Dinner</li>
+          <li>Favorites</li>
+        </ul>
+      </section>
+      <section id="add-list-page" class="hidden">
+        <form id="add-list-form">
+          <legend>Create a list:</legend>
+          <input type="text" placeholder="  Name" required>
+          <input type="text" placeholder="  Description">
+          <input type="submit">
+        </form>
+      </section>
+      <section id="individual-list-page">
+        <h2>[Individual List Name]</h2>
+        <ul id="individual-list">
+            <li>Restaurant 1</li>
+            <li>Restaurant 2</li>
+            <li>Restaurant 3</li>
+            <li>Restaurant 4</li>
+            <li>Restaurant 5</li>
+        </ul>
+      </section>
+      <section id="individual-restaurant-page" class="hidden">
+        <button>Back</button>
+        <h1>Restaurant Name</h1>
+        <div id="img-placeholder">[image placeholder]</div>
+          <p>Address:</p>
+          <p>Phone:</p>
+          <p>Hours:</p>
+          <form>
+          <div>
+              <label for="select">Add to list:</label>
+              <select>
+                <option value="visited">Visited</option>
+                <option value="toVisit">To Visit</option>
+              </select>
+            </div>
+              <input type="text" placeholder="  Notes">
+            <div>
+              <label for="rating">Rating:</label>
+              <select>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+            <input type="submit">
+          </form>
+      </section>
+      <section id="search-page" class="hidden">
+        <input type="text" placeholder="  Search">
+        <ul>
+          <li>Restaurant 1</li>
+          <li>Restaurant 2</li>
+          <li>Restaurant 3</li>
+          <li>Restaurant 4</li>
+          <li>Restaurant 5</li>
+        </ul>
+      </section>
+      <section id="profile-page" class="hidden">
+        <div>[img placeholder]</div>
+        <h2>Molly</h2>
+        <label for="select">Select City:</label>
+            <select>
+              <option value="sf">San Francisco</option>
+              <option value="ny">New York</option>
+              <option value="chi">Chicago</option>
+              <option value="la">Los Angeles</option>
+            </select>
+        <p>You've visited 48 restaurants</p>
+        <label>Invite a fellow foodie:</label>
+        <input type="text">
+      </section>
+      <nav role="navigation" id="bottom-nav">
+        <ul id="main-nav">
+          <li><a href="#"><img src="images/user.png"></a></li>
+          <li><a href="#"><img src="images/magnifier.png"></a></li>
+          <li><a href="#"><img src="images/list.png"></a></li>
+        </ul>
+      </nav>
+    </main>
   </body>
 </html>
