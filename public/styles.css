@@ -234,11 +234,7 @@ button, input[type=submit] {
 
 .save-button {
     display: block;
-    margin: 0 auto !important;
-}
-
-.edit-restaurant-info {
-    margin: 10px;
+    margin: 10px auto !important;
 }
 
 textarea {
