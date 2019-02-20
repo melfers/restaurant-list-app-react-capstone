@@ -1,5 +1,5 @@
 # Nom List
-Green Thumb is an app that lets users log notes and watering dates on their houseplants so that they can track when they need to water the plant next. Green Thumb helps make sure your house plants stay happy! 
+An app that helps you track and rate restaurant visits.
 
 ### Working Prototype
 
@@ -11,29 +11,35 @@ View React working prototype here: [Nom List](https://restaurant-list-react.hero
 
 ## UX & User Stories: MVP
 
-**All Plants Page** 
+**All Lists** 
 
-As a user, I want to be able to view all the plants I have added so that I can select a plant to view.
+As a user, I want to be able to view all the restaurant lists I've made, so that I can select a list to view.
 
-![All Plants Page](wireframes/all_plants_page.jpg)
+![All Lists Page](wireframes/all-lists-page.jpg)
 
-**Add New Plant Page**
+**Add New List Page**
 
-As a user, I want to be able to add a new plant so that I can track its watering history and notes.
+As a user, I want to be able to add a new list so that I can track restaurants that I would like to visit.
 
-![New Plant Page Wireframe](wireframes/new_plant_page.jpg)
+![Add List Page](wireframes/add-list-page.jpg)
 
-**Individual Plant Page**
+**Individual Restuarant Page**
 
-As a user, I want to be able to view an individual plant so I can see its watering history.
+As a user, I want to be able to view an individual restaurant so I can see detailed information about it, add notes, and ratings.
 
-![Individual Plant Page](wireframes/individual_plant_page.jpg)
+![Individual Restaurant Page](wireframes/individual-restaurant-page.jpg)
 
-**Edit Plant Page**
+**Individual List Page**
 
-As a user, I want to be able to edit an individual plant so that I can add watering dates or notes.
+As a user, I want to be able to view an individual list, so that I can see what restaurants I've added to that list.
 
-![Edit Plant Page](wireframes/edit_plant_page.jpg)
+![Individual List Page](wireframes/individual-list-page.jpg)
+
+**Search Page**
+
+As a user, I want to be able to search for restaurants to add to a list.
+
+![Search Page](wireframes/search-page.jpg)
 
 ## Designs
 
@@ -70,7 +76,8 @@ Green Thumb was built with:
 * HTML5
 * CSS3
 * JavaScript 
-* jQuery 
+* React
+* Redux
 
 **Back End**
 
