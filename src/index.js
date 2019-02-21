@@ -4,11 +4,11 @@ import { Provider } from 'react-redux';
 
 import store from './store';
 
-import NomList from './components/nom-list';
+import NomApp from './app.js';
 
 ReactDOM.render(
   <Provider store={store}>
-    <NomList />
+    <NomApp />
   </Provider>,
   document.getElementById('root')
 );

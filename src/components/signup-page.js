@@ -1,8 +1,20 @@
+//Convert to stateful
+
 import React from 'react';
 
 import {connect} from 'react-redux';
 
-export function SignupPage() {
+export class SignupPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    cons inputs = [this.]
+  }
+
     return (
       <div>
         <h2>Sign Up</h2>
