@@ -5,24 +5,24 @@ import {connect} from 'react-redux';
 export function IndividualRestaurant() {
     return (
       <div>
-        <img src="images/back-arrow.png" class="back-button" />
+        <img src="images/back-arrow.png" className="back-button" alt=" " />
         <h2>Bob's Donuts</h2>
         <div id="img-placeholder">
-          <img src="images/stock-donut.jpg" class="individual-restaurant-img" />
+          <img src="images/stock-donut.jpg" className="individual-restaurant-img" alt=" " />
         </div>
           <p>1822 South Van Ness Ave.</p>
           <p>415-960-3293</p>
           <p>Hours:</p>
           <form>
-            <div class="edit-restaurant-info">
-                <label for="select">Add to list:</label>
+            <div className="edit-restaurant-info">
+                <label htmlFor="select">Add to list:</label>
                 <select>
                   <option value="visited">Visited</option>
                   <option value="toVisit">To Visit</option>
                 </select>
             </div>
-            <div class="edit-restaurant-info">
-                <label for="rating">Rating:</label>
+            <div className="edit-restaurant-info">
+                <label htmlFor="rating">Rating:</label>
                 <select>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -30,8 +30,8 @@ export function IndividualRestaurant() {
                   <option value="4">4</option>
                 </select>
               </div>
-            <textarea placeholder="  Notes" class="edit-restaurant-info"></textarea>
-            <input type="submit" value="Save" class="save-button" />
+            <textarea placeholder="  Notes" className="edit-restaurant-info"></textarea>
+            <input type="submit" value="Save" className="save-button" />
           </form>
         </div>
     );
