@@ -1,14 +1,17 @@
 import React from 'react';
 
-import TopNav from './top-nav';
+import {connect} from 'react-redux';
 
-import './header.css';
-
-export default function Header(props) {
-  return (
-    <header>
-      <TopNav />
-      <h1>HOT or COLD</h1>
-    </header>
-  );
+export function Header() {
+    return (
+        <div>
+            <header role="banner">
+                <span className="header-letters">N </span>
+                <img src="images/donut.png" id="header-donut" />
+                <span className="header-letters"> M</span>
+            </header>
+        </div>
+    );
 }
+
+export default connect()(Header);
