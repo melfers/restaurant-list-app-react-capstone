@@ -12,24 +12,64 @@ export class SignupPage extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    cons inputs = [this.]
+    const inputs = [this.name, this.email, this.password];
+    const user = {
+      name: this.name.value,
+      email: this.email.value,
+      password: this.password.value
+    };
+    this.props.dispatch(signupUser(user));
+    inputs.map(input => (input.value =""));
   }
 
+  render() {
+    if (this.props.loggedIn) {
+      return <Redirect to="/lists/user" />;
+    }
     return (
-      <div>
+      <section id="signup-page">
         <h2>Sign Up</h2>
-        <form>
-          <input type="text" placeholder="  Name" />
-          <input type="text" placeholder="  Email" />
-          <input type="text" placeholder="  Password" />
-          <input type="text" placeholder="  Re-enter password" />
-          <div>
-            <button>Back</button>
-            <input type="submit" />
-          </div>
+        <form onSubmit={this.onSubmit}>
+          <fieldset>
+            <label htmlFor="name">Name:</label>
+            <input
+              type="text" 
+              ref={input => (this.name = input)}
+              required 
+            />
+            <label htmlFor="email">Email:</label>
+            <input
+            type="email" 
+            ref={input => (this.email = input)}
+            required 
+            />
+            <label htmlFor="password">Password</label>
+            <input
+              type="password" 
+              ref={input => (this.password = input)}
+              required 
+            />
+            <label htmlFor="reEnterPassword">Re-Enter Password</label>
+            <input 
+              type="password"
+              ref={input => (this.password2 = input)}
+              required
+            />
+            <div>
+              <button>Back</button>
+              <input type="submit" />
+            </div>
+          </fieldset>
         </form>
-      </div>
+      </section>
     );
+  }
 }
 
-export default connect()(SignupPage);
+export const mapStateToProps = state => ({
+  loggedIn: state.user,
+  loading: state.loading,
+  error: state.error
+});
+
+export default connect(mapStateToProps)(SignupPage);
