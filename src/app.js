@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { Component } from 'react';
 
 import Header from './components/header';
 import LandingPage from './components/landing-page';
@@ -37,5 +37,10 @@ class NomApp extends Component {
     );
   }
 }
+
+export const mapStateToProps = state => ({
+  loggedIn: state.user,
+  error: state.error
+});
 
 export default connect(mapStateToProps)(NomApp);
