@@ -22,23 +22,19 @@ export default class SearchPage extends React.Component {
     render(){
         return (
             <form onSubmit={this.onSubmit}>
-                <label htmlFor="search">Search:
+                <label htmlFor="search">Search:</label>
                     <input 
                         type="text"
                         ref={input => (this.textInput = input)} 
-                    />
-                </label>
-                <input
-                    type="submit"
-                    value="Search"
                 />
                 {this.props.results}
                 <ul className="lists">
-                <li className="restaurant-card">
-                    <img src="images/stock-donut.jpg" alt=" " />
-                    <h2>Bob's Donuts</h2>
-                    <p>Breakfast  |  Rating: 4.5</p>
-                </li>
+                    <li className="restaurant-card">
+                        <img src="images/stock-donut.jpg" alt=" " />
+                        <h2>Bob's Donuts</h2>
+                        <p>Breakfast  |  Rating: 4.5</p>
+                    </li>
+                </ul>
             </form>
         );
     }

@@ -4,7 +4,8 @@ const initialState = {
     user: null,
     error: null,
     loading: false,
-    userLists: []
+    userLists: [],
+    results: []
 };
 
 export const reducer = (state = initialState, action) => {
@@ -52,6 +53,21 @@ export const reducer = (state = initialState, action) => {
             loading: false,
             userLists: action.lists
         });
+    }
+
+    if (action.type === actions.CREATE_LIST) {
+        return Object.assign({}, state, {
+          loading: false
+        });
+      }
+
+    if (action.type === actions.DISPLAY_RESULTS) {
+    const results = action.results.items;
+    return Object.assign({}, state, {
+        error: null,
+        loading: false,
+        results: results
+    });
     }
 
     return state;
