@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { signupUser } from '../actions';
 
 export class SignupPage extends React.Component {
