@@ -3,7 +3,8 @@ import * as actions from "../actions";
 const initialState = {
     user: null,
     error: null,
-    loading: false
+    loading: false,
+    userLists: []
 };
 
 export const reducer = (state = initialState, action) => {
@@ -43,6 +44,13 @@ export const reducer = (state = initialState, action) => {
             loading: false,
             user: action.currentUser.username,
             userID: action.currentUser.id
+        });
+    }
+
+    if (action.type === actions.GET_LISTS) {
+        return Object.assign({}, state, {
+            loading: false,
+            userLists: action.lists
         });
     }
 

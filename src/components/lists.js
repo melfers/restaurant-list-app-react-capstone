@@ -18,8 +18,9 @@ class Lists extends React.Component {
         listArray = this.props.lists.map((list, index) => {
             return (
                 <div className="restaurant-card" key={index}>
-                    <Link to="/lists/user/individualList">
+                    <Link to="/lists/user/listName">
                         <h2>{list.title}</h2>
+                        <p>{list.description}</p>
                     </Link>
                 </div>
         )};
