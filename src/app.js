@@ -24,7 +24,7 @@ class NomApp extends Component {
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/auth/signup" component={SignupPage} />
             <Route exact path="/auth/login" component={LoginPage} />
-            <Route exact path="/lists/user" component={AllLists} />
+            <Route exact path="/lists/user" render={() => <AllLists error={this.props.error} loggedIn={this.props.loggedIn} />} />
             <Route exact path="/lists/user/addList" component={AddList} />
             <Route exact path="/lists/user/listName" component={IndividualList} />
             <Route exact path="/search/restaurantName" component={IndividualRestaurant} />

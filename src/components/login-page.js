@@ -3,6 +3,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
+import { login } from '../actions';
 
 export class LoginPage extends React.Component {
   constructor(props) {
@@ -34,6 +35,7 @@ export class LoginPage extends React.Component {
           <h1 className="second-header">  M</h1>
         </div>
         <h2>Log In</h2>
+        <span className="error">{this.props.error}</span>
         <form onSubmit={this.onSubmit}>
           <fieldset>
             <div>

@@ -4,24 +4,44 @@ import React from 'react';
 
 import {connect} from 'react-redux';
 
-export function SearchPage() {
-    return (
-        <div>
-            <label htmlFor="search">Search:</label>
-            <input type="text" />
-            <ul className="lists">
-            <li className="restaurant-card">
-                <img src="images/stock-donut.jpg" alt=" " />
-                <h2>Bob's Donuts</h2>
-                <p>Breakfast  |  Rating: 4.5</p>
-            </li>
-            <li>Restaurant 2</li>
-            <li>Restaurant 3</li>
-            <li>Restaurant 4</li>
-            <li>Restaurant 5</li>
-            </ul>
-        </div>
-    );
+export default class SearchPage extends React.Component {
+    constructor(props){
+        super(props);
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
+        const input = this.textInput.value.trim();
+        if(input && this.props.onSearch) {
+            this.props.onSearch(this.textInput.value);
+        }
+        this.textInput.value = "";
+    }
+
+    render(){
+        return (
+            <form onSubmit={this.onSubmit}>
+                <label htmlFor="search">Search:
+                    <input 
+                        type="text"
+                        ref={input => (this.textInput = input)} 
+                    />
+                </label>
+                <input
+                    type="submit"
+                    value="Search"
+                />
+                {this.props.results}
+                <ul className="lists">
+                <li className="restaurant-card">
+                    <img src="images/stock-donut.jpg" alt=" " />
+                    <h2>Bob's Donuts</h2>
+                    <p>Breakfast  |  Rating: 4.5</p>
+                </li>
+            </form>
+        );
+    }
 }
 
 export default connect()(SearchPage);

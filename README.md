@@ -4,6 +4,7 @@ An app that helps you track and rate restaurant visits.
 ### Working Prototype
 
 View React working prototype here: [Nom List](https://restaurant-list-react.herokuapp.com/) 
+View Node working prototype here: [Nom List](https://restaurant-list-node.herokuapp.com/) 
 
 ## Site Map: MVP 
 

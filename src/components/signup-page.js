@@ -3,6 +3,7 @@
 import React from 'react';
 
 import {connect} from 'react-redux';
+import { signupUser } from '../actions';
 
 export class SignupPage extends React.Component {
   constructor(props) {
@@ -29,6 +30,7 @@ export class SignupPage extends React.Component {
     return (
       <section id="signup-page">
         <h2>Sign Up</h2>
+        <span className="error">{this.props.error}</span>
         <form onSubmit={this.onSubmit}>
           <fieldset>
             <label htmlFor="name">Name:</label>
