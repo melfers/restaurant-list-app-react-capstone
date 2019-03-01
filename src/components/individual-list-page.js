@@ -25,10 +25,12 @@ export class IndividualList extends React.Component {
             ));
     return (
         <div>
+            <Header />
             <h2>{list.title}</h2>
             <ul className="list">
                 {restaurants}
             </ul>
+            <Nav />
         </div>
     );
 }
