@@ -89,7 +89,7 @@ export const getUserLists= (user, token) => dispatch => {
       return res.json();
     })
     .then(res => {
-      dispatch(genWatchlist(res.lists));
+      dispatch(getLists(res.lists));
     })
     .catch(err => {
       dispatch(fetchErr(err));
