@@ -8,7 +8,7 @@ export function ProfilePage() {
         <div>
           <img src="images/user.png" id="profile-img" alt=" " />
         </div>
-        <h2>Molly</h2>
+        <h2>{user.name}</h2>
         <p>You've visited 48 restaurants</p>
         <form>
           <label htmlFor="select">Select City:</label>

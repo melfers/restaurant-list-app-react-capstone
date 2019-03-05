@@ -4,7 +4,9 @@ import jwtDecode from 'jwt-decode';
 export const LOGIN = 'LOGIN';
 export const GET_LISTS = 'GET_LISTS';
 export const CREATE_LIST = 'CREATE_LIST';
-export const DISPLAY_RESULTS = 'DISPLAY_RESULTS';
+export const DISPLAY_SEARCH_RESULTS = 'DISPLAY_SEARCH_RESULTS';
+export const DISPLAY_RESTAURANT = 'DISPLAY_RESTAURANT';
+export const ADD_USER_NOTES = 'ADD_USER_NOTES';
 
 /*Action Creators*/
 export const loginUser = user => ({
@@ -24,12 +26,23 @@ export const createList = (user, title, description) => ({
   description
 });
 
-export const displayResults = restaurants => ({
-  type: DISPLAY_RESULTS,
-  restaurants
+export const displaySearchResults = searchResults => ({
+  type: DISPLAY_SEARCH_RESULTS,
+  searchResults
 });
 
+export const displayRestaurant = currentRestaurant => ({
+  type: DISPLAY_RESTAURANT,
+  currentRestaurant
+});
 
+export const addUserNotes = userNotes => ({
+  type: ADD_USER_NOTES,
+  userNotes,
+  currentRestaurant
+});
+
+/*Action Functions*/
 export const login = user => dispatch => {
   dispatch(request());
   fetch(`${API_ORIGIN}/auth/login`, {
@@ -72,7 +85,7 @@ export const signupUser = user => dispatch => {
     });
 };
 
-// getUserLists gets saved lists
+// Gets saved lists for a user
 export const getUserLists= (user, token) => dispatch => {
   dispatch(request());
   fetch(`${API_ORIGIN}/lists/${user}`, {
@@ -145,7 +158,62 @@ export const searchRestaurants = (term, token) => dispatch => {
       return res.json();
     })
     .then(res => {
-      dispatch(displayResults(res.response.body));
+      dispatch(displaySearchResults(res.response.body));
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+// Pulls individual restaurant info for a selected restaurant
+export const pullRestaurantInfo = (id, token) => dispatch => {
+  dispatch(request());
+  fetch(`${API_ORIGIN}/search/restaurant/${id}`, {
+    mode: "cors",
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      Authorization: `Bearer ${token}`
+    }
+  })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      return res.json();
+    })
+    .then(res => {
+      dispatch(displayRestaurant(res.response.body));
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+// Adds user's notes to an individual restaurant
+export const postUserNotes = (currentRestaurant, userNotes, addToList) => dispatch => {
+  const userNotesObj = {
+    currentRestaurant,
+    userNotes,
+    addToList
+  }
+  dispatch(request());
+  fetch(`${API_ORIGIN}/search/restaurant/:id`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify(userNotesObj)
+  })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      return res.json();
+    })
+    .then(res => {
+      console.log(res);
+      dispatch(addUserNotes(res));
     })
     .catch(err => {
       console.log(err);

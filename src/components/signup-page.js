@@ -59,7 +59,9 @@ export class SignupPage extends React.Component {
             />
             <div>
               <button>Back</button>
-              <input type="submit" />
+              <input 
+                type="submit"
+               />
             </div>
           </fieldset>
         </form>

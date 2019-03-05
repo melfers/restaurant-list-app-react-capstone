@@ -10,22 +10,27 @@ export class Lists extends React.Component {
               <Spinner className="spinner" name="circle" />
             </div>
           );
-    }
+        }
 
-    let listArray = [];
+        let listArray = [];
 
-    // for rendering all lists
-    if (this.props.lists.length > 0) {
-        listArray = this.props.lists.map((list, index) => {
+        // for rendering all lists
+        if (this.props.lists.length > 0) {
+            listArray = this.props.lists.map((list, index) => (
+                    <li className="restaurant-card" key={index}>
+                        <Link to="/lists/user/listName">
+                            <h2>{list.title}</h2>
+                            <p>{list.description}</p>
+                        </Link>
+                    </li>
+            ));
             return (
-                <div className="restaurant-card" key={index}>
-                    <Link to="/lists/user/listName">
-                        <h2>{list.title}</h2>
-                        <p>{list.description}</p>
-                    </Link>
-                </div>
+                <ul className="list">
+                    {listArray}
+                </ul>
             );
-    });
+        }
+    }
 }
 
 export const mapStateToProps = state => ({
