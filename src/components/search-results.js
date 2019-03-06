@@ -30,16 +30,16 @@ export class SearchResults extends React.Component {
         // for rendering search list
         if (this.props.restaurants.length > 0) {
             resultsList = this.props.searchResults.map((restaurant, index) => (
-                <button
-                    id={restaurant.id}
-                    onClick={e => this.displayRestaurantInfo(e.currentTarget)}
-                >
-                    <li className="restaurant-card" key={index}>
+                    <li 
+                        className="restaurant-card"
+                        id={restaurant.id}
+                        key={index}
+                        onClick={e => this.displayRestaurantInfo(e.currentTarget)}
+                    >
                         <img src={restaurant.thumb} alt="thumbnail-image" />
                         <h2>{restaurant.name}</h2>
                         <p>{restaurant.cuisines}</p>
                     </li>
-                </button>
             ));
             return (
                 <div>

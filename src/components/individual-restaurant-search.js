@@ -4,7 +4,7 @@ import React from 'react';
 
 import {connect} from 'react-redux';
 
-export class IndividualRestaurant extends React.component{
+export class IndividualRestaurantSearch extends React.component{
   constructor(props) {
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
@@ -45,15 +45,12 @@ export class IndividualRestaurant extends React.component{
           <form onSubmit={this.onSubmit}>
             <div className="edit-restaurant-info">
                 <label htmlFor="select">Add to list:</label>
-                <select>
+                <select
+                  ref={input => (this.listAdd = input)}
+                >
                   {listArray}
                 </select>
             </div>
-            <textarea 
-              placeholder="  Notes" 
-              className="edit-restaurant-info"
-              ref={input => (this.notes = input)}
-              ></textarea>
             <input 
               type="submit" 
               value="Save" 
@@ -66,4 +63,4 @@ export class IndividualRestaurant extends React.component{
   }
 };
 
-export default connect()(IndividualRestaurant);
+export default connect()(IndividualRestaurantSearch);

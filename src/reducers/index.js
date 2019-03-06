@@ -5,6 +5,7 @@ const initialState = {
     error: null,
     loading: false,
     userLists: [],
+    currentList: [],
     searchResults: [],
     currentRestaurant: [],
     restaurantUserNotes: []
@@ -88,5 +89,12 @@ export const reducer = (state = initialState, action) => {
             restaurantUserNotes: userNotes
         });
     }
+
+    if (action.type === actions.DELETE_RESTAURANT) {
+        return Object.assign({}, state, {
+          loading: false,
+          currentList: state.currentList.filter(list => list._id !== action.id)
+        });
+      }
     return state;
 };
