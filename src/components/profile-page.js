@@ -2,13 +2,13 @@ import React from 'react';
 
 import {connect} from 'react-redux';
 
-export function ProfilePage() {
+export function ProfilePage(props) {
     return (
       <div>
         <div>
           <img src="images/user.png" id="profile-img" alt=" " />
         </div>
-        <h2>{user.name}</h2>
+        <h2>{this.props.user.name}</h2>
         <p>You've visited 48 restaurants</p>
         <form>
           <label htmlFor="select">Select City:</label>

@@ -1,6 +1,8 @@
 import React from 'react';
-
+import Spinner from 'react-spinkit';
 import {connect} from 'react-redux';
+
+import { Link } from 'react-router-dom';
  
 export class Lists extends React.Component {
     render() {
@@ -12,17 +14,24 @@ export class Lists extends React.Component {
           );
         }
 
+
+
         let listArray = [];
 
         // for rendering all lists
-        if (this.props.lists.length > 0) {
-            listArray = this.props.lists.map((list, index) => (
-                    <li className="restaurant-card" key={index}>
-                        <Link to="/lists/user/listName">
-                            <h2>{list.title}</h2>
-                            <p>{list.description}</p>
-                        </Link>
-                    </li>
+        if (this.props.userLists.length > 0) {
+            listArray = this.props.userLists.map((list, index) => (
+                <li 
+                    className="restaurant-card" 
+                    key={index}
+                    id={list._id}
+                    onClick={e => this.playVideo(e.currentTarget, "search")}
+                >
+                    <Link to="/lists/user/listName/:id">
+                        <h2>{list.title}</h2>
+                        <p>{list.description}</p>
+                    </Link>
+                </li>
             ));
             return (
                 <ul className="list">

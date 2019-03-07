@@ -1,6 +1,9 @@
 import React from 'react';
+import Header from './header';
+import Lists from './lists';
+import Nav from './nav';
 
-import {connect} from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
 
 export default function AllLists(props) {
     if (!props.loggedIn) {
@@ -26,5 +29,4 @@ export default function AllLists(props) {
     );
 }
 
-export default connect()(AllLists);
 

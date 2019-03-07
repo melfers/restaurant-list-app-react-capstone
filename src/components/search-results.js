@@ -16,7 +16,7 @@ export class SearchResults extends React.Component {
 
     render(){  
         if (this.props.loading) {
-            spinnerIcon = (
+            let spinnerIcon = (
                 <div className="spinner-container">
                 <Spinner className="spinner" name="circle" />
                 </div>
@@ -43,7 +43,7 @@ export class SearchResults extends React.Component {
             ));
             return (
                 <div>
-                    <h2>{list.title}</h2>
+                    <h2>{this.props.currentList.title}</h2>
                     <ul className="list">
                         {resultsList}
                     </ul>

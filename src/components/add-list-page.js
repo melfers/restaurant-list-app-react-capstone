@@ -1,8 +1,12 @@
 import React from 'react';
+import Header from './header';
+import Nav from './nav';
 
 import {connect} from 'react-redux';
 
-export default class AddList extends React.Component(props) {
+import { createList } from '../actions';
+
+export class AddList extends React.Component() {
     constructor(props) {
         super(props);
         this.onSubmit = this.onSubmit.bind(this);

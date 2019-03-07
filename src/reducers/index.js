@@ -28,13 +28,13 @@ export const reducer = (state = initialState, action) => {
         });
     }
 
-    if (action.type === actions.SIGNUP) {
+    /*if (action.type === actions.SIGNUP) {
         return Object.assign({}, state, {
           error: null,
           loading: false,
           user: action.user
         });
-      }
+    }*/
     
     if (action.type === actions.SET_AUTH_TOKEN) {
         return Object.assign({}, state, {
@@ -74,7 +74,7 @@ export const reducer = (state = initialState, action) => {
         });
     }
 
-    if (action.type === actions.DISPLAY_RESTAURANT) {
+    if (action.type === actions.DISPLAY_LIST_RESTAURANT) {
         const currentRestaurant = action.displayRestaurant.currentRestaurant;
         return Object.assign({}, state, {
             currentRestaurant: currentRestaurant
@@ -95,6 +95,8 @@ export const reducer = (state = initialState, action) => {
           loading: false,
           currentList: state.currentList.filter(list => list._id !== action.id)
         });
-      }
+    
+    }
+
     return state;
 };

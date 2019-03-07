@@ -6,13 +6,16 @@ import SignupPage from './components/signup-page';
 import LoginPage from './components/login-page';
 import AllLists from './components/all-lists-page';
 import AddList from './components/add-list-page';
-import { IndividualList } from './components/individual-list-page';
-import IndividualRestaurant from './components/individual-restaurant-page';
+import { IndividualList } from './components/individual-list';
+import IndividualRestaurant from './components/individual-restaurant';
+import IndividualRestaurantEdit from './components/individual-restaurant-edit';
+import IndividualRestaurantSearch from './components/individual-restaurant-search';
 import SearchPage from './components/search-page';
 import ProfilePage from './components/profile-page';
 import Nav from './components/nav';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { connect } from 'react-redux';
 
 class NomApp extends Component {
   render() {

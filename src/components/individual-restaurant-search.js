@@ -1,8 +1,10 @@
-//Convert to stateful
-
 import React from 'react';
+import Header from './header';
+import Nav from './nav';
 
 import {connect} from 'react-redux';
+
+import { postUserNotes } from '../actions';
 
 export class IndividualRestaurantSearch extends React.component{
   constructor(props) {
@@ -21,9 +23,12 @@ export class IndividualRestaurantSearch extends React.component{
     inputs.map(input => (input.value =""));
   }
 
+
   render() {
+    let searchList = [];
+
     if(this.props.userLists.length > 0){
-      listArray = this.props.userLists.map((list, index) => (
+      searchList = this.props.userLists.map((list, index) => (
         <option 
           value={list.name} 
           key={index}
@@ -35,20 +40,20 @@ export class IndividualRestaurantSearch extends React.component{
         <div>
           <Header />
           <img src="images/back-arrow.png" className="back-button" alt=" " />
-          <h2>{restaurant.name}</h2>
+          <h2>{this.props.currentRestaurant.name}</h2>
           <div id="img-placeholder">
-            <img src={restaurant.featured_image} className="individual-restaurant-img" alt="featured-restaurant-image" />
+            <img src={this.props.currentRestaurant.featured_image} className="individual-restaurant-img" alt="featured-restaurant-image" />
           </div>
-          <p>{restaurant.location.address}</p>
-          <p>{restaurant.location.locality}</p>
-          <p>{restaurant.cuisines}</p>
+          <p>{this.props.currentRestaurant.location.address}</p>
+          <p>{this.props.currentRestaurant.location.locality}</p>
+          <p>{this.props.currentRestaurant.cuisines}</p>
           <form onSubmit={this.onSubmit}>
             <div className="edit-restaurant-info">
                 <label htmlFor="select">Add to list:</label>
                 <select
                   ref={input => (this.listAdd = input)}
                 >
-                  {listArray}
+                  {searchList}
                 </select>
             </div>
             <input 

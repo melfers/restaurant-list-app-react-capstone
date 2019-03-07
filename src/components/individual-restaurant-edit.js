@@ -1,6 +1,10 @@
 import React from 'react';
+import Header from './header';
+import Nav from './nav';
 
 import {connect} from 'react-redux';
+
+import { deleteRestaurantFromList, postUserNotes } from '../actions';
 
 export class IndividualRestaurantEdit extends React.component{
   onSubmit(e) {
@@ -15,19 +19,11 @@ export class IndividualRestaurantEdit extends React.component{
 
   onClick(e) {
     e.preventDefault();
-    this.props.dispatch(deleteRestaurant(currentRestaurant));
+    const currentRestaurant = this.props.currentRestaurant;
+    this.props.dispatch(deleteRestaurantFromList(currentRestaurant));
   }
 
   render() {
-    if(this.props.userLists.length > 0){
-      listArray = this.props.userLists.map((list, index) => (
-        <option 
-          value={list.name} 
-          key={index}
-          >{list.name}</option>
-      ));
-    }
-
     return (
         <div>
           <Header />
@@ -58,5 +54,10 @@ export class IndividualRestaurantEdit extends React.component{
       );
   }
 };
+
+export const mapStateToProps = state => ({
+  currentRestaurant: state.currentRestaurant,
+  error: state.error
+});
 
 export default connect()(IndividualRestaurantEdit);

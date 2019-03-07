@@ -1,9 +1,8 @@
-//Convert to stateful
-
 import React from 'react';
 
 import { connect } from 'react-redux';
 import { login } from '../actions';
+import { Redirect } from 'react-router-dom';
 
 export class LoginPage extends React.Component {
   constructor(props) {
@@ -64,7 +63,8 @@ export class LoginPage extends React.Component {
 
 export const mapStateToProps = state => ({
   loggedIn: state.user,
-  error: state.error
+  error: state.error,
+  user: state.user
 });
 
 export default connect (mapStateToProps)(LoginPage);

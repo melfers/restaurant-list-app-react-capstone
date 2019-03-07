@@ -1,5 +1,3 @@
-//Convert to stateful
-
 import React from 'react';
 
 import { connect } from 'react-redux';
@@ -24,9 +22,6 @@ export class SignupPage extends React.Component {
   }
 
   render() {
-    if (this.props.loggedIn) {
-      return <Redirect to="/lists/user" />;
-    }
     return (
       <section id="signup-page">
         <h2>Sign Up</h2>
@@ -71,7 +66,6 @@ export class SignupPage extends React.Component {
 }
 
 export const mapStateToProps = state => ({
-  loggedIn: state.user,
   loading: state.loading,
   error: state.error
 });

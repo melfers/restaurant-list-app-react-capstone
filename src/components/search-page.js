@@ -4,14 +4,13 @@ import Header from "./header";
 import SearchForm from "./search-form";
 import SearchResults from "./search-results"
 
-import requiresLogin from "./requires-login";
 import { connect } from "react-redux";
 import { searchRestaurants } from "../actions";
 
 export class SearchPage extends React.Component {
 
   onSearch(term) {
-    this.props.dispatch(searchRestaurants(term, this.props.authToken));
+    this.props.dispatch(searchRestaurants(term));
   }
 
   render() {
@@ -40,4 +39,4 @@ export const mapStateToProps = state => ({
   authToken: state.authToken
 });
 
-export default requiresLogin()(connect(mapStateToProps)(SearchPage));
+export default (connect(mapStateToProps)(SearchPage));

@@ -1,11 +1,18 @@
 import React from 'react';
 
 import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import { getLists } from '../actions/index';
 
 export class Nav extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
 
   getAllLists() {
-    this.props.dispatch(getAllLists(this.props.user, this.props.authToken));
+    this.props.dispatch(getLists(this.props.user));
   }
 
   render() {  
@@ -20,7 +27,7 @@ export class Nav extends React.Component {
                 <Link to="/search"><img src="images/magnifier.png" alt=" " /></Link>
               </li>
               <li>
-                <Link to="/allLists" onClick={() => this.getAllLists()}>
+                <Link to="/lists/user/:id" onClick={() => this.getAllLists()}>
                 <img src="images/list.png" alt=" " /></Link>
               </li>
             </ul>
@@ -30,4 +37,8 @@ export class Nav extends React.Component {
   };
 }
 
-export default connect()(Nav);
+export const mapStateToProps = state => ({
+  user: state.user
+});
+
+export default connect(mapStateToProps)(Nav);

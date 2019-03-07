@@ -1,6 +1,8 @@
 import jwtDecode from 'jwt-decode';
+import { API_ORIGIN } from '../config';
 
 /* Action Types */
+export const REQUEST = 'REQUEST';
 export const LOGIN = 'LOGIN';
 export const GET_LISTS = 'GET_LISTS';
 export const CREATE_LIST = 'CREATE_LIST';
@@ -8,9 +10,18 @@ export const DISPLAY_SEARCH_RESULTS = 'DISPLAY_SEARCH_RESULTS';
 export const DISPLAY_SEARCH_RESTAURANT = 'DISPLAY_SEARCH_RESTAURANT';
 export const DISPLAY_LIST_RESTAURANT = 'DISPLAY_LIST_RESTAURANT';
 export const ADD_USER_NOTES = 'ADD_USER_NOTES';
-export const DELETE_RESTAURANT = 'DELETE_RESTAURANT'
+export const DELETE_RESTAURANT = 'DELETE_RESTAURANT';
+export const AUTH_REQUEST = "AUTH_REQUEST";
+export const SET_AUTH_TOKEN = "SET_AUTH_TOKEN";
+export const AUTH_SUCCESS = "AUTH_SUCCESS";
+export const ERROR = "ERROR";
+
 
 /*Action Creators*/
+export const request = () => ({
+  type: REQUEST
+});
+
 export const loginUser = user => ({
   type: LOGIN,
   user
@@ -34,12 +45,12 @@ export const displaySearchResults = searchResults => ({
 });
 
 export const displaySearchRestaurant = currentRestaurant => ({
-  type: DISPLAY_RESTAURANT,
+  type: DISPLAY_SEARCH_RESTAURANT,
   currentRestaurant
 });
 
 export const displayListRestaurant = (listId, restaurantId) => ({
-  type: DISPLAY_RESTAURANT,
+  type: DISPLAY_LIST_RESTAURANT,
   listId,
   restaurantId
 });
@@ -54,7 +65,32 @@ export const addUserNotes = (listId, restaurantId, userNotes) => ({
 export const deleteRestaurant = (restaurantId) => ({
   type: DELETE_RESTAURANT,
   restaurantId
-})
+});
+
+export const fetchErr = err => ({
+  type: ERROR,
+  err
+});
+
+export const authRequest = () => ({
+  type: AUTH_REQUEST
+});
+
+export const setAuthToken = authToken => ({
+  type: SET_AUTH_TOKEN,
+  authToken
+});
+
+export const authSuccess = currentUser => ({
+  type: AUTH_SUCCESS,
+  currentUser
+});
+
+const storeAuthInfo = (authToken, dispatch) => {
+  const decodedToken = jwtDecode(authToken);
+  dispatch(setAuthToken(authToken));
+  dispatch(authSuccess(decodedToken));
+};
 
 /*Action Functions*/
 export const login = user => dispatch => {
@@ -100,7 +136,7 @@ export const signupUser = user => dispatch => {
 };
 
 // Gets saved lists for a user
-export const getUserLists= (userId token) => dispatch => {
+export const getUserLists= (userId, token) => dispatch => {
   dispatch(request());
   fetch(`${API_ORIGIN}/lists/user/${userId}`, {
     mode: "cors",
@@ -135,8 +171,7 @@ export const addNewList = (user, title, description) => dispatch => {
   fetch(`${API_ORIGIN}/lists/user`, {
     method: "POST",
     headers: {
-      "content-type": "application/json",
-      Authorization: `Bearer ${token}`
+      "content-type": "application/json"
     },
     body: JSON.stringify(listObject)
   })
@@ -237,8 +272,7 @@ export const postUserNotes = (currentRestaurant, userNotes) => dispatch => {
   fetch(`${API_ORIGIN}/lists/user/listname/:id/:restaurantId/edit`, {
     method: "POST",
     headers: {
-      "content-type": "application/json",
-      Authorization: `Bearer ${token}`
+      "content-type": "application/json"
     },
     body: JSON.stringify(userNotesObj)
   })
@@ -258,7 +292,7 @@ export const postUserNotes = (currentRestaurant, userNotes) => dispatch => {
 };
 
 //Deletes an individual restaurant from a list
-export const deleteRestaurant = (currentRestaurant) => dispatch => {
+export const deleteRestaurantFromList = (currentRestaurant) => dispatch => {
   dispatch(request);
   fetch(`${API_ORIGIN}/lists/user/listname/:id/${currentRestaurant}/edit`, {
     method: "DELETE",
@@ -268,7 +302,7 @@ export const deleteRestaurant = (currentRestaurant) => dispatch => {
     }
   })
     .then(res => {
-      dispatch(deleteFromList(currentRestaurant));
+      dispatch(deleteRestaurantFromList(currentRestaurant));
     })
     .catch(err => {
       console.log(err);
