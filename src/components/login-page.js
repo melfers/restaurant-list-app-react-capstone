@@ -30,7 +30,7 @@ export class LoginPage extends React.Component {
       <section id="login-page">
         <div id="login-header">
           <h1 className="second-header">N  </h1>
-          <img src="images/donut.png" className="sub-donut" alt=" " />
+          <img src="/images/donut.png" className="sub-donut" alt=" " />
           <h1 className="second-header">  M</h1>
         </div>
         <h2>Log In</h2>
@@ -41,6 +41,7 @@ export class LoginPage extends React.Component {
               <label htmlFor="email">Email:</label>
               <input 
                 type="email"
+                className="loginForm"
                 ref={input => (this.email = input)}
                 required
               />
@@ -49,6 +50,7 @@ export class LoginPage extends React.Component {
               <label htmlFor="password">Password:</label>
               <input 
                 type="password"
+                className="loginForm"
                 ref={input => (this.password = input)}
                 required
               />

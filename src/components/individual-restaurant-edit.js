@@ -6,10 +6,10 @@ import {connect} from 'react-redux';
 
 import { deleteRestaurantFromList, postUserNotes } from '../actions';
 
-export class IndividualRestaurantEdit extends React.component{
+export class IndividualRestaurantEdit extends React.Component {
   onSubmit(e) {
     e.preventDefault();
-    const inputs = [this.notes];
+    const inputs = this.notes;
     const currentRestaurant = this.props.currentRestaurant;
     const userNotes = this.notes.value;
 
@@ -30,7 +30,7 @@ export class IndividualRestaurantEdit extends React.component{
           <img src="images/back-arrow.png" className="back-button" alt=" " />
           <h2>{this.props.currentRestaurant.name}</h2>
           <div id="img-placeholder">
-            <img src={this.props.currentRestaurant.featured_image} className="individual-restaurant-img" alt="featured-restaurant-image" />
+            <img src={this.props.currentRestaurant.featured_image} className="individual-restaurant-img" alt="featured-restaurant" />
           </div>
           <p>{this.props.currentRestaurant.location.address}</p>
           <p>{this.props.currentRestaurant.location.locality}</p>

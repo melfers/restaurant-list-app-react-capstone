@@ -28,13 +28,13 @@ export const reducer = (state = initialState, action) => {
         });
     }
 
-    /*if (action.type === actions.SIGNUP) {
+    if (action.type === actions.SIGNUP_USER) {
         return Object.assign({}, state, {
           error: null,
           loading: false,
           user: action.user
         });
-    }*/
+    }
     
     if (action.type === actions.SET_AUTH_TOKEN) {
         return Object.assign({}, state, {

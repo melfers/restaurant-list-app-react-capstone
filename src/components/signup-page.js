@@ -18,12 +18,13 @@ export class SignupPage extends React.Component {
       password: this.password.value
     };
     this.props.dispatch(signupUser(user));
+    console.log(user);
     inputs.map(input => (input.value =""));
   }
 
   render() {
     return (
-      <section id="signup-page">
+      <section id="signupPage">
         <h2>Sign Up</h2>
         <span className="error">{this.props.error}</span>
         <form onSubmit={this.onSubmit}>

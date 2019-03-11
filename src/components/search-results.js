@@ -36,7 +36,7 @@ export class SearchResults extends React.Component {
                         key={index}
                         onClick={e => this.displayRestaurantInfo(e.currentTarget)}
                     >
-                        <img src={restaurant.thumb} alt="thumbnail-image" />
+                        <img src={restaurant.thumb} alt="thumbnail" />
                         <h2>{restaurant.name}</h2>
                         <p>{restaurant.cuisines}</p>
                     </li>

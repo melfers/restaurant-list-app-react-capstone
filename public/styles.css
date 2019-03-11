@@ -257,6 +257,10 @@ select {
     font-size: 15px;
 }
 
+.loginForm input {
+    display: block;
+}
+
 
 
 

@@ -1,6 +1,5 @@
 import React , { Component } from 'react';
 
-import Header from './components/header';
 import LandingPage from './components/landing-page';
 import SignupPage from './components/signup-page';
 import LoginPage from './components/login-page';
@@ -12,9 +11,8 @@ import IndividualRestaurantEdit from './components/individual-restaurant-edit';
 import IndividualRestaurantSearch from './components/individual-restaurant-search';
 import SearchPage from './components/search-page';
 import ProfilePage from './components/profile-page';
-import Nav from './components/nav';
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from 'react-redux';
 
 class NomApp extends Component {
@@ -22,7 +20,6 @@ class NomApp extends Component {
     return (
       <Router>
         <div>
-          <Header />
           <main role="main">
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/auth/signup" component={SignupPage} />
@@ -35,7 +32,6 @@ class NomApp extends Component {
             <Route exact path="/search" component={SearchPage} />
             <Route exact path="/search/restaurant/:id" component={IndividualRestaurantSearch} />
             <Route exact path="/user" component={ProfilePage} />
-            <Nav />
           </main>
         </div>
       </Router>

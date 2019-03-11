@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 
 import { createList } from '../actions';
 
-export class AddList extends React.Component() {
+export class AddList extends React.Component {
     constructor(props) {
         super(props);
         this.onSubmit = this.onSubmit.bind(this);

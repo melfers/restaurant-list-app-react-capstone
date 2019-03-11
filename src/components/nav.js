@@ -6,11 +6,6 @@ import { Link } from 'react-router-dom';
 import { getLists } from '../actions/index';
 
 export class Nav extends React.Component {
-  constructor(props) {
-    super(props);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
   getAllLists() {
     this.props.dispatch(getLists(this.props.user));
   }

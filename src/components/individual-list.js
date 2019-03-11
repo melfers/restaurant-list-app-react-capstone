@@ -25,7 +25,7 @@ export class IndividualList extends React.Component {
                     <li class="restaurant-card"
                         onClick={(e => this.showRestaurantInfo(e.currentTarget))}
                     >
-                        <img src={restaurant.featured_image} />
+                        <img src={restaurant.featured_image} alt="featured-restaurant" />
                         <h2>{restaurant.name}</h2>
                         <p>{restaurant.cuisines}</p>
                     </li>

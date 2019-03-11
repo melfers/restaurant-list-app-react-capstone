@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 
 import { postUserNotes } from '../actions';
 
-export class IndividualRestaurantSearch extends React.component{
+export class IndividualRestaurantSearch extends React.Component{
   constructor(props) {
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
@@ -42,7 +42,7 @@ export class IndividualRestaurantSearch extends React.component{
           <img src="images/back-arrow.png" className="back-button" alt=" " />
           <h2>{this.props.currentRestaurant.name}</h2>
           <div id="img-placeholder">
-            <img src={this.props.currentRestaurant.featured_image} className="individual-restaurant-img" alt="featured-restaurant-image" />
+            <img src={this.props.currentRestaurant.featured_image} className="individual-restaurant-img" alt="featured-restaurant" />
           </div>
           <p>{this.props.currentRestaurant.location.address}</p>
           <p>{this.props.currentRestaurant.location.locality}</p>

@@ -4,6 +4,7 @@ import { API_ORIGIN } from '../config';
 /* Action Types */
 export const REQUEST = 'REQUEST';
 export const LOGIN = 'LOGIN';
+export const SIGNUP_USER = 'SIGNUP_USER';
 export const GET_LISTS = 'GET_LISTS';
 export const CREATE_LIST = 'CREATE_LIST';
 export const DISPLAY_SEARCH_RESULTS = 'DISPLAY_SEARCH_RESULTS';
@@ -24,6 +25,11 @@ export const request = () => ({
 
 export const loginUser = user => ({
   type: LOGIN,
+  user
+});
+
+export const signup = user => ({
+  type: SIGNUP_USER,
   user
 });
 
@@ -86,7 +92,7 @@ export const authSuccess = currentUser => ({
   currentUser
 });
 
-const storeAuthInfo = (authToken, dispatch) => {
+export const storeAuthInfo = (authToken, dispatch) => {
   const decodedToken = jwtDecode(authToken);
   dispatch(setAuthToken(authToken));
   dispatch(authSuccess(decodedToken));
@@ -115,6 +121,7 @@ export const login = user => dispatch => {
 };
 
 export const signupUser = user => dispatch => {
+  console.log('hey');
   dispatch(request());
   fetch(`${API_ORIGIN}/auth/signup`, {
     method: "POST",

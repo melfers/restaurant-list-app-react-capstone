@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './header';
 import Nav from './nav';
 
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 export default function IndividualRestaurant() {
     return (
@@ -11,7 +11,7 @@ export default function IndividualRestaurant() {
           <img src="images/back-arrow.png" className="back-button" alt=" " />
           <h2>{this.props.currentRestaurant.name}</h2>
           <div id="img-placeholder">
-            <img src={this.props.currentRestaurant.featured_image} className="individual-restaurant-img" alt="featured-restaurant-image" />
+            <img src={this.props.currentRestaurant.featured_image} className="individual-restaurant-img" alt="featured-restaurant" />
           </div>
           <p>{this.props.currentRestaurant.location.address}</p>
           <p>{this.props.currentRestaurant.location.locality}</p>
