@@ -66,6 +66,7 @@ export const reducer = (state = initialState, action) => {
     }
 
     if (action.type === actions.CREATE_LIST) {
+        const list = actions.list;
         return Object.assign({}, state, {
           loading: false, 
           userLists: action.lists
@@ -73,12 +74,12 @@ export const reducer = (state = initialState, action) => {
     }
 
     if (action.type === actions.DISPLAY_SEARCH_RESULTS) {
-    const searchResults = action.searchResults.items;
-    return Object.assign({}, state, {
-        error: null,
-        loading: false,
-        searchResults: searchResults
-        });
+        const searchResults = action.searchResults.items;
+        return Object.assign({}, state, {
+            error: null,
+            loading: false,
+            searchResults: searchResults
+            });
     }
 
     if (action.type === actions.DISPLAY_LIST_RESTAURANT) {
