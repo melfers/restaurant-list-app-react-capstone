@@ -66,7 +66,7 @@ export const reducer = (state = initialState, action) => {
     }
 
     if (action.type === actions.CREATE_LIST) {
-        const list = actions.list;
+        //const list = actions.list;
         return Object.assign({}, state, {
           loading: false, 
           userLists: action.lists

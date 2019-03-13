@@ -24,7 +24,7 @@ export class SignupPage extends React.Component {
 
   render() {
     if (this.props.loggedIn) {
-      return <Redirect to="/lists/user/:id" />;
+      return <Redirect to="auth/login" />;
     }
     return (
       <section id="signupPage">

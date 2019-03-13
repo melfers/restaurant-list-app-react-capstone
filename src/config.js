@@ -1,1 +1,1 @@
-exports.API_ORIGIN = process.env.REACT_APP_API_ORIGIN || 'https://restaurant-list-react.herokuapp.com/';
+exports.API_ORIGIN = 'https://restaurant-list-node.herokuapp.com';
