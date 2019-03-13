@@ -2,6 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 import { signupUser } from '../actions';
+import { Redirect } from 'react-router-dom';
 
 export class SignupPage extends React.Component {
   constructor(props) {
@@ -18,11 +19,13 @@ export class SignupPage extends React.Component {
       password: this.password.value
     };
     this.props.dispatch(signupUser(user));
-    console.log(user);
     inputs.map(input => (input.value =""));
   }
 
   render() {
+    if (this.props.loggedIn) {
+      return <Redirect to="/lists/user/:id" />;
+    }
     return (
       <section id="signupPage">
         <h2>Sign Up</h2>
@@ -68,7 +71,8 @@ export class SignupPage extends React.Component {
 
 export const mapStateToProps = state => ({
   loading: state.loading,
-  error: state.error
+  error: state.error,
+  loggedIn: state.user
 });
 
 export default connect(mapStateToProps)(SignupPage);

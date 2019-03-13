@@ -4,6 +4,7 @@ const initialState = {
     user: null,
     error: null,
     loading: false,
+    loggedIn: false,
     userLists: [],
     currentList: [],
     searchResults: [],
@@ -34,6 +35,12 @@ export const reducer = (state = initialState, action) => {
           loading: false,
           user: action.user
         });
+    }
+
+    if (action.type === actions.LOGGED_IN) {
+        return Object.assign({}, state, {
+            loggedIn: true
+        })
     }
     
     if (action.type === actions.SET_AUTH_TOKEN) {

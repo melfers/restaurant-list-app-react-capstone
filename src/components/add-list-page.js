@@ -4,7 +4,7 @@ import Nav from './nav';
 
 import {connect} from 'react-redux';
 
-import { createList } from '../actions';
+import { addNewList } from '../actions';
 
 export class AddList extends React.Component {
     constructor(props) {
@@ -16,10 +16,11 @@ export class AddList extends React.Component {
         e.preventDefault();
         const inputs = [this.title, this.description];
         const newList = {
+            user: this.props.user,
             title: this.title.value,
             description: this.description.value
         };
-        this.props.dispatch(createList(newList));
+        this.props.dispatch(addNewList(newList));
         inputs.map(input => (input.value = ""));
     }
 

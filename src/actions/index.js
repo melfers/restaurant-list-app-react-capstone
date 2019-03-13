@@ -16,6 +16,7 @@ export const AUTH_REQUEST = "AUTH_REQUEST";
 export const SET_AUTH_TOKEN = "SET_AUTH_TOKEN";
 export const AUTH_SUCCESS = "AUTH_SUCCESS";
 export const ERROR = "ERROR";
+export const LOGGED_IN = "LOGGED_IN";
 
 
 /*Action Creators*/
@@ -38,11 +39,9 @@ export const getLists = userId => ({
   userId
 });
 
-export const createList = (user, title, description) => ({
+export const createList = (newList) => ({
   type: CREATE_LIST,
-  user,
-  title,
-  description
+  newList
 });
 
 export const displaySearchResults = searchResults => ({
@@ -87,6 +86,10 @@ export const setAuthToken = authToken => ({
   authToken
 });
 
+export const loggedIn = () => ({
+  type: LOGGED_IN 
+});
+
 export const authSuccess = currentUser => ({
   type: AUTH_SUCCESS,
   currentUser
@@ -121,7 +124,6 @@ export const login = user => dispatch => {
 };
 
 export const signupUser = user => dispatch => {
-  console.log('hey');
   dispatch(request());
   fetch(`${API_ORIGIN}/auth/signup`, {
     method: "POST",
@@ -136,6 +138,7 @@ export const signupUser = user => dispatch => {
       }
       return res.json();
     })
+    .then(dispatch(loggedIn()))
     .then(authToken => storeAuthInfo(authToken.token, dispatch))
     .catch(err => {
       dispatch(fetchErr(err));
@@ -166,21 +169,15 @@ export const getUserLists= (userId, token) => dispatch => {
     });
 };
 
-// addNewList adds a list to All Lists 
-export const addNewList = (user, title, description) => dispatch => {
-  const listObject = {
-    user,
-    title,
-    description
-  };
-
+// addNewList adds a list to All Lists for a user
+export const addNewList = (newList) => dispatch => {
   dispatch(request());
-  fetch(`${API_ORIGIN}/lists/user`, {
+  fetch(`${API_ORIGIN}/lists/user/:id`, {
     method: "POST",
     headers: {
       "content-type": "application/json"
     },
-    body: JSON.stringify(listObject)
+    body: JSON.stringify(newList)
   })
     .then(res => {
       if (!res.ok) {
@@ -198,9 +195,9 @@ export const addNewList = (user, title, description) => dispatch => {
 };
 
 // Finds restaurants using the Zomato API
-export const searchRestaurants = (term, token) => dispatch => {
+export const searchRestaurants = (term, cityId, token) => dispatch => {
   dispatch(request());
-  fetch(`${API_ORIGIN}/search/${term}`, {
+  fetch(`${API_ORIGIN}/search/${cityId}/${term}`, {
     mode: "cors",
     headers: {
       "Access-Control-Allow-Origin": "*",
