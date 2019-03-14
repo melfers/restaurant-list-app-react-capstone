@@ -76,7 +76,8 @@ ul li {
 }
 
 a {
-text-decoration: none;
+    text-decoration: none;
+    all: unset;
 }
 
 p {

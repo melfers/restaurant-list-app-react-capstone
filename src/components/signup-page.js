@@ -2,7 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 import { signupUser } from '../actions';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 export class SignupPage extends React.Component {
   constructor(props) {
@@ -24,10 +24,15 @@ export class SignupPage extends React.Component {
 
   render() {
     if (this.props.loggedIn) {
-      return <Redirect to="auth/login" />;
+      return <Redirect to="/auth/login" />;
     }
     return (
       <section id="signupPage">
+        <div id="login-header">
+          <h1 className="second-header">N  </h1>
+          <img src="/images/donut.png" className="sub-donut" alt=" " />
+          <h1 className="second-header">  M</h1>
+        </div>
         <h2>Sign Up</h2>
         <form onSubmit={this.onSubmit}>
           <fieldset>
@@ -60,7 +65,7 @@ export class SignupPage extends React.Component {
               required
             />
             <div>
-              <button>Back</button>
+              <button><Link to="/">Back</Link></button>
               <input 
                 type="submit"
                />

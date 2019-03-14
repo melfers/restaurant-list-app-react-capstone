@@ -22,9 +22,9 @@ export class LoginPage extends React.Component {
   }
 
   render() {
-    if (this.props.loggedIn) {
+    /*if (this.props.loggedIn) {
       return <Redirect to="/lists/user" />
-    }
+    }*/
 
     return (
       <section id="login-page">
