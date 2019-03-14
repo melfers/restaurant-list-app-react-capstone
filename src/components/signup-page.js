@@ -12,7 +12,7 @@ export class SignupPage extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const inputs = [this.name, this.email, this.password];
+    const inputs = [this.name, this.email, this.password, this.password2];
     const user = {
       name: this.name.value,
       email: this.email.value,
@@ -29,31 +29,34 @@ export class SignupPage extends React.Component {
     return (
       <section id="signupPage">
         <h2>Sign Up</h2>
-        <span className="error">{this.props.error}</span>
         <form onSubmit={this.onSubmit}>
           <fieldset>
             <label htmlFor="name">Name:</label>
             <input
               type="text" 
               ref={input => (this.name = input)}
+              className="signup"
               required 
             />
             <label htmlFor="email">Email:</label>
             <input
             type="email" 
             ref={input => (this.email = input)}
+            className="signup"
             required 
             />
             <label htmlFor="password">Password</label>
             <input
               type="password" 
               ref={input => (this.password = input)}
+              className="signup"
               required 
             />
             <label htmlFor="reEnterPassword">Re-Enter Password</label>
             <input 
               type="password"
               ref={input => (this.password2 = input)}
+              className="signup"
               required
             />
             <div>

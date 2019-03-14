@@ -3,8 +3,8 @@ import { API_ORIGIN } from '../config';
 
 /* Action Types */
 export const REQUEST = 'REQUEST';
-export const LOGIN = 'LOGIN';
-export const SIGNUP_USER = 'SIGNUP_USER';
+export const LOG_USER = 'LOG_USER';
+export const CHAT_USERS = 'CHAT_USERS';
 export const GET_LISTS = 'GET_LISTS';
 export const CREATE_LIST = 'CREATE_LIST';
 export const DISPLAY_SEARCH_RESULTS = 'DISPLAY_SEARCH_RESULTS';
@@ -16,7 +16,6 @@ export const AUTH_REQUEST = "AUTH_REQUEST";
 export const SET_AUTH_TOKEN = "SET_AUTH_TOKEN";
 export const AUTH_SUCCESS = "AUTH_SUCCESS";
 export const ERROR = "ERROR";
-export const LOGGED_IN = "LOGGED_IN";
 
 
 /*Action Creators*/
@@ -24,14 +23,14 @@ export const request = () => ({
   type: REQUEST
 });
 
-export const loginUser = user => ({
-  type: LOGIN,
+export const logUser = user => ({
+  type: LOG_USER,
   user
 });
 
-export const signup = user => ({
-  type: SIGNUP_USER,
-  user
+export const chatUsers = users => ({
+  type: CHAT_USERS,
+  users
 });
 
 export const getLists = userId => ({
@@ -86,19 +85,18 @@ export const setAuthToken = authToken => ({
   authToken
 });
 
-export const loggedIn = () => ({
-  type: LOGGED_IN 
-});
-
 export const authSuccess = currentUser => ({
   type: AUTH_SUCCESS,
   currentUser
 });
 
 export const storeAuthInfo = (authToken, dispatch) => {
+  console.log('storeauthinfo ran');
   const decodedToken = jwtDecode(authToken);
-  dispatch(setAuthToken(authToken));
+  dispatch(setAuthToken(authToken.password));
   dispatch(authSuccess(decodedToken));
+  console.log({ user: decodedToken.email });
+  dispatch(logSession({ "user": decodedToken.email }));
 };
 
 /*Action Functions*/
@@ -124,6 +122,7 @@ export const login = user => dispatch => {
 };
 
 export const signupUser = user => dispatch => {
+  console.log(user);
   dispatch(request());
   fetch(`${API_ORIGIN}/auth/signup`, {
     method: "POST",
@@ -138,10 +137,30 @@ export const signupUser = user => dispatch => {
       }
       return res.json();
     })
-    .then(dispatch(loggedIn()))
     .then(authToken => storeAuthInfo(authToken.token, dispatch))
     .catch(err => {
       dispatch(fetchErr(err));
+    });
+};
+
+export const logSession = user => dispatch => {
+  console.log(user);
+  fetch(`${API_ORIGIN}/auth/userLoggedIn`, {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify(user)
+  })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      return res.json();
+    })
+    .then(res => {
+      dispatch(chatUsers(res.loggedIn));
     });
 };
 

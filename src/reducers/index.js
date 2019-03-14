@@ -1,10 +1,11 @@
 import * as actions from "../actions";
 
 const initialState = {
+    authToken: '',
+    chatUsers: [],
     user: null,
     error: null,
     loading: false,
-    loggedIn: false,
     userLists: [],
     currentList: [],
     searchResults: [],
@@ -21,26 +22,20 @@ export const reducer = (state = initialState, action) => {
         });
       }
 
-    if (action.type === actions.LOGIN) {
-        return Object.assign({}, state, {
+    if (action.type === actions.LOG_USER) {
+    return Object.assign({}, state, {
         error: null,
         loading: false,
         user: action.user
-        });
+    });
     }
 
-    if (action.type === actions.SIGNUP_USER) {
+    if (action.type === actions.CHAT_USERS) {
         return Object.assign({}, state, {
           error: null,
           loading: false,
-          user: action.user
-        });
-    }
-
-    if (action.type === actions.LOGGED_IN) {
-        return Object.assign({}, state, {
-            loggedIn: true
-        })
+          chatUsers: action.users
+    });
     }
     
     if (action.type === actions.SET_AUTH_TOKEN) {
@@ -53,8 +48,7 @@ export const reducer = (state = initialState, action) => {
     if (action.type === actions.AUTH_SUCCESS) {
         return Object.assign({}, state, {
             loading: false,
-            user: action.currentUser.username,
-            userID: action.currentUser.id
+            user: action.currentUser.email
         });
     }
 

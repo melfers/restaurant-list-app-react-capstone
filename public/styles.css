@@ -93,6 +93,12 @@ header {
     margin-bottom: 50px;
 }
 
+label {
+    display: block;
+    text-align: left;
+    font-size: 14px;
+}
+
 #header-donut {
     height: 25px;
     margin-top: 5px;
@@ -116,8 +122,21 @@ h2 {
     padding: 10px;
 }
 
-input[type=text] {
+/*input[type=text] {
     width: 50%;
+    height: 40px;
+    border: .5px solid lightgray;
+    border-radius: 5px;
+    margin: 5px;
+}*/
+
+fieldset { 
+    width: 55%;
+    margin: auto;
+}
+
+.signup {
+    width: 100%;
     height: 40px;
     border: .5px solid lightgray;
     border-radius: 5px;
@@ -255,10 +274,6 @@ select {
     margin: 15px;
     width: 125px;
     font-size: 15px;
-}
-
-.loginForm input {
-    display: block;
 }
 
 

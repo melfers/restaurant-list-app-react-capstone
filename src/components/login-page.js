@@ -43,6 +43,7 @@ export class LoginPage extends React.Component {
                 type="email"
                 className="loginForm"
                 ref={input => (this.email = input)}
+                className="signup"
                 required
               />
             </div>
@@ -52,6 +53,7 @@ export class LoginPage extends React.Component {
                 type="password"
                 className="loginForm"
                 ref={input => (this.password = input)}
+                className="signup"
                 required
               />
             </div>
