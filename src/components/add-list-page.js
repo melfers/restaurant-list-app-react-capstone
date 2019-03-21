@@ -14,14 +14,16 @@ export class AddList extends React.Component {
 
     onSubmit(e) {
         e.preventDefault();
-        const inputs = [this.title, this.description];
+        //let inputs = [this.title, this.description];
+        let userId = this.props.user;
+        console.log(userId);
         const newList = {
-            user: this.props.user,
-            title: this.title.value,
+            user: userId,
+            name: this.name.value,
             description: this.description.value
         };
         this.props.dispatch(addNewList(newList));
-        inputs.map(input => (input.value = ""));
+        //inputs.map(input => (input.value = ""));
     }
 
     render() {
@@ -33,7 +35,7 @@ export class AddList extends React.Component {
                     <input 
                         type="text" 
                         placeholder="  Name" 
-                        ref={input => (this.title = input)}
+                        ref={input => (this.name = input)}
                         required 
                     />
                     <input 
@@ -50,4 +52,8 @@ export class AddList extends React.Component {
     };
 }
 
-export default connect()(AddList);
+export const mapStateToProps = state => ({
+    user: state.user
+});
+  
+export default connect(mapStateToProps)(AddList);

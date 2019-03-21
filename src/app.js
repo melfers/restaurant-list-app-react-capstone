@@ -24,7 +24,12 @@ class NomApp extends Component {
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/auth/signup" component={SignupPage} />
             <Route exact path="/auth/login" component={LoginPage} />
-            <Route path="/lists/user/:id" render={() => <AllLists error={this.props.error} loggedIn={this.props.loggedIn} />} />
+            <Route path="/lists/user/:id" render={() => <AllLists 
+              error={this.props.error} 
+              loggedIn={this.props.loggedIn} 
+              userLists={this.props.userLists} 
+              />} 
+            />
             <Route exact path="/lists/user/addList" component={AddList} />
             <Route path="/lists/user/listname/:id" component={IndividualList} />
             <Route path="/lists/user/listname/:id/:restaurantId" component={IndividualRestaurant} />
@@ -41,7 +46,8 @@ class NomApp extends Component {
 
 export const mapStateToProps = state => ({
   loggedIn: state.user,
-  error: state.error
+  error: state.error,
+  userLists: state.userLists
 });
 
 export default connect(mapStateToProps)(NomApp);

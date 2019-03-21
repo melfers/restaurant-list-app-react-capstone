@@ -33,9 +33,9 @@ export const chatUsers = users => ({
   users
 });
 
-export const getLists = userId => ({
+export const getLists = lists => ({
   type: GET_LISTS,
-  userId
+  lists
 });
 
 export const createList = (newList) => ({
@@ -165,23 +165,24 @@ export const logSession = user => dispatch => {
 };
 
 // Gets saved lists for a user
-export const getUserLists= (userId, token) => dispatch => {
+export const getUserLists= (userId/*, token*/) => dispatch => {
   dispatch(request());
   fetch(`${API_ORIGIN}/lists/user/${userId}`, {
-    mode: "cors",
+    method: "GET",
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      Authorization: `Bearer ${token}`
-    }
+      "content-type": "application/json"
+    },
   })
     .then(res => {
+      console.log(res);
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }
       return res.json();
     })
     .then(res => {
-      dispatch(getLists(res.lists));
+      console.log(res);
+      dispatch(getLists(res));
     })
     .catch(err => {
       dispatch(fetchErr(err));
@@ -191,7 +192,7 @@ export const getUserLists= (userId, token) => dispatch => {
 // addNewList adds a list to All Lists for a user
 export const addNewList = (newList) => dispatch => {
   dispatch(request());
-  fetch(`${API_ORIGIN}/lists/user/:id`, {
+  fetch(`${API_ORIGIN}/lists/user/addList`, {
     method: "POST",
     headers: {
       "content-type": "application/json"

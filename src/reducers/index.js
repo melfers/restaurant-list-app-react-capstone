@@ -3,7 +3,7 @@ import * as actions from "../actions";
 const initialState = {
     authToken: '',
     chatUsers: [],
-    user: null,
+    user: '5c8be3be5f197c0017522bfe',
     error: null,
     loading: false,
     userLists: [],
@@ -63,7 +63,7 @@ export const reducer = (state = initialState, action) => {
         //const list = actions.list;
         return Object.assign({}, state, {
           loading: false, 
-          userLists: action.lists
+          userLists: action.newList
         });
     }
 
@@ -73,7 +73,7 @@ export const reducer = (state = initialState, action) => {
             error: null,
             loading: false,
             searchResults: searchResults
-            });
+        });
     }
 
     if (action.type === actions.DISPLAY_LIST_RESTAURANT) {
