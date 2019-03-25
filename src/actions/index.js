@@ -1,12 +1,15 @@
 import jwtDecode from 'jwt-decode';
 import { API_ORIGIN } from '../config';
+import { isNull } from 'util';
 
 /* Action Types */
 export const REQUEST = 'REQUEST';
 export const LOG_USER = 'LOG_USER';
 export const CHAT_USERS = 'CHAT_USERS';
 export const GET_LISTS = 'GET_LISTS';
+export const VERIFY_LIST_NAME = 'VERIFY_LIST_NAME';
 export const CREATE_LIST = 'CREATE_LIST';
+export const DISPLAY_LIST = 'DISPLAY_LIST';
 export const DISPLAY_SEARCH_RESULTS = 'DISPLAY_SEARCH_RESULTS';
 export const DISPLAY_SEARCH_RESTAURANT = 'DISPLAY_SEARCH_RESTAURANT';
 export const DISPLAY_LIST_RESTAURANT = 'DISPLAY_LIST_RESTAURANT';
@@ -38,9 +41,19 @@ export const getLists = lists => ({
   lists
 });
 
-export const createList = (newList) => ({
+export const verifyListName = newList => ({
+  type: VERIFY_LIST_NAME,
+  newList
+});
+
+export const createList = newList => ({
   type: CREATE_LIST,
   newList
+});
+
+export const displayList = list => ({
+  type: DISPLAY_LIST,
+  list
 });
 
 export const displaySearchResults = searchResults => ({
@@ -189,10 +202,30 @@ export const getUserLists= (userId/*, token*/) => dispatch => {
     });
 };
 
+//Verify no list exists with input name
+/*export const verifyListName = (newList) => {
+  dispatch(request());
+  fetch(`${API_ORIGIN}/lists/user/addList/verify`, {
+    method: "GET",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify(newList)
+  })
+  .then(response => response.json())
+  .then(data => {
+      if (!data.result == isNull) {
+          alert('Sorry, there is already a list with that name. Please try a new one!');
+          $('#newPlantNickname').val('');
+      }
+  })
+  .catch(error => console.error(error))
+}*/
+
 // addNewList adds a list to All Lists for a user
 export const addNewList = (newList) => dispatch => {
   dispatch(request());
-  fetch(`${API_ORIGIN}/lists/user/addList`, {
+  fetch(`${API_ORIGIN}/user/add/list`, {
     method: "POST",
     headers: {
       "content-type": "application/json"
@@ -214,14 +247,40 @@ export const addNewList = (newList) => dispatch => {
     });
 };
 
-// Finds restaurants using the Zomato API
-export const searchRestaurants = (term, cityId, token) => dispatch => {
+// Gets a single list for a user
+export const getSingleList= (userId, listId) => dispatch => {
   dispatch(request());
-  fetch(`${API_ORIGIN}/search/${cityId}/${term}`, {
-    mode: "cors",
+  fetch(`${API_ORIGIN}/user/singleList/:userId/:listId`, {
+    method: "GET",
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      Authorization: `Bearer ${token}`
+      "content-type": "application/json"
+    },
+  })
+    .then(res => {
+      console.log(res);
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      return res.json();
+    })
+    .then(res => {
+      console.log(res);
+      dispatch(displayList(res));
+    })
+    .catch(err => {
+      dispatch(fetchErr(err));
+    });
+};
+
+// Finds restaurants using the Zomato API
+export const searchRestaurants = (term, cityId /*token*/) => dispatch => {
+  dispatch(request());
+  console.log(cityId, term);
+  fetch(`${API_ORIGIN}/search/${cityId}/${term}`, {
+    method: "GET",
+    headers: {
+      "content-type": "application/json"
+      /*Authorization: `Bearer ${token}`*/
     }
   })
     .then(res => {
@@ -230,8 +289,9 @@ export const searchRestaurants = (term, cityId, token) => dispatch => {
       }
       return res.json();
     })
-    .then(res => {
-      dispatch(displaySearchResults(res.response.body));
+    .then(data => {
+      console.log(data.restaurants);
+      dispatch(displaySearchResults(data.restaurants));
     })
     .catch(err => {
       console.log(err);
@@ -241,7 +301,8 @@ export const searchRestaurants = (term, cityId, token) => dispatch => {
 // Pulls individual restaurant info for a selected restaurant from search
 export const pullRestaurantInfo = (id, token) => dispatch => {
   dispatch(request());
-  fetch(`${API_ORIGIN}/search/restaurant/${id}`, {
+  console.log(id);
+  fetch(`${API_ORIGIN}/singleRestaurant/${id}`, {
     mode: "cors",
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -254,8 +315,9 @@ export const pullRestaurantInfo = (id, token) => dispatch => {
       }
       return res.json();
     })
-    .then(res => {
-      dispatch(displaySearchRestaurant(res.response.body));
+    .then(data => {
+      console.log(data);
+      dispatch(displaySearchRestaurant(data));
     })
     .catch(err => {
       console.log(err);
@@ -265,7 +327,7 @@ export const pullRestaurantInfo = (id, token) => dispatch => {
 // Pulls individual restaurant info for a selected restaurant from a list
 export const getRestaurantInfoList = (listId, restaurantId, token) => dispatch => {
   dispatch(request());
-  fetch(`${API_ORIGIN}/lists/user/listname/${listId}/${restaurantId}`, {
+  fetch(`${API_ORIGIN}/list/${listId}/restaurant/${restaurantId}`, {
     mode: "cors",
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -287,13 +349,13 @@ export const getRestaurantInfoList = (listId, restaurantId, token) => dispatch =
 };
 
 // Adds user's notes to an individual restaurant
-export const postUserNotes = (currentRestaurant, userNotes) => dispatch => {
+export const postUserNotes = (listId, currentRestaurant, userNotes) => dispatch => {
   const userNotesObj = {
     currentRestaurant,
     userNotes
   }
   dispatch(request());
-  fetch(`${API_ORIGIN}/lists/user/listname/:id/:restaurantId/edit`, {
+  fetch(`${API_ORIGIN}/list/edit/${listId}/${currentRestaurant}`, {
     method: "POST",
     headers: {
       "content-type": "application/json"

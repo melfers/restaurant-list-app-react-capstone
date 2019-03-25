@@ -16,14 +16,14 @@ export class Nav extends React.Component {
           <nav role="navigation" id="bottom-nav">
             <ul id="main-nav">
               <li>
-                <Link to="/user"><img src="images/user.png" alt=" " /></Link>
+                <Link to="/user"><img src={require("../images/user.png")} alt=" " /></Link>
               </li>
               <li>
-                <Link to="/search"><img src="images/magnifier.png" alt=" " /></Link>
+                <Link to="/search"><img src={require("../images/magnifier.png")} alt=" " /></Link>
               </li>
               <li>
                 <Link to="/lists/user/:id" onClick={() => this.getAllLists()}>
-                <img src="images/list.png" alt=" " /></Link>
+                <img src={require("../images/list.png")} alt=" " /></Link>
               </li>
             </ul>
           </nav>

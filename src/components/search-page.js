@@ -1,7 +1,6 @@
 import React from "react";
 import Nav from "./nav";
 import Header from "./header";
-import SearchForm from "./search-form";
 import SearchResults from "./search-results"
 
 import { connect } from "react-redux";
@@ -9,8 +8,13 @@ import { searchRestaurants } from "../actions";
 
 export class SearchPage extends React.Component {
 
-  onSearch(term) {
-    this.props.dispatch(searchRestaurants(term));
+  onSubmit(e) {
+    e.preventDefault();
+    const searchTerm = this.refs.searchTerm.value;
+    const cityId = 306;
+    //const input = this.textInput.value.trim();
+    this.props.dispatch(searchRestaurants(searchTerm, cityId));
+    //.value = "";
   }
 
   render() {
@@ -18,11 +22,14 @@ export class SearchPage extends React.Component {
       <div>
         <Header />
         <section>
-          <h2>Search</h2>
-          <SearchForm
-            placeholder="Search"
-            onSearch={term => this.onSearch(term)}
-          />
+          <h2>Find a restaurant</h2>
+          <form onSubmit={ (e) => this.onSubmit(e)}>
+            <input 
+                type="text"
+                ref="searchTerm"
+            />
+            <input type="submit" value="Search" />
+          </form>
           <div>
             <SearchResults />
           </div>

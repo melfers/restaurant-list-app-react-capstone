@@ -68,11 +68,20 @@ export const reducer = (state = initialState, action) => {
     }
 
     if (action.type === actions.DISPLAY_SEARCH_RESULTS) {
-        const searchResults = action.searchResults.items;
+        const searchResults = action.searchResults;
         return Object.assign({}, state, {
             error: null,
             loading: false,
             searchResults: searchResults
+        });
+    }
+
+    if (action.type === actions.DISPLAY_SEARCH_RESTAURANT) {
+        const restInfo = action.restInfo;
+        return Object.assign({}, state, {
+            error: null,
+            loading: false,
+            currentRestaurant: restInfo
         });
     }
 

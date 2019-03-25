@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+import { searchRestaurants } from '../actions'; 
+
 export default class SearchForm extends React.Component {
     constructor(props){
         super(props);
@@ -9,21 +12,19 @@ export default class SearchForm extends React.Component {
     onSubmit(e) {
         e.preventDefault();
         const input = this.textInput.value.trim();
-        if(input && this.props.onSearch) {
+        if (input && this.props.onSearch) {
             this.props.onSearch(this.textInput.value);
-        }
-        this.textInput.value = "";
+          }
+        input.value = "";
     }
 
     render(){
         return (
             <form onSubmit={this.onSubmit}>
-                <label htmlFor="search">Search:</label>
-                    <input 
-                        type="text"
-                        ref={input => (this.textInput = input)} 
+                <input 
+                    type="text"
+                    ref={input => (this.textInput = input)} 
                 />
-                {this.props.results}
                 <input type="submit" value="Search" />
             </form>
         );

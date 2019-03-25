@@ -12,6 +12,11 @@ export class IndividualRestaurantSearch extends React.Component{
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  componentDidMount(){
+    let selectedRest = this.props.currentRestaurant;
+    console.log(selectedRest);
+};
+
   onSubmit(e) {
     e.preventDefault();
     const inputs = [this.listAdd, this.notes];

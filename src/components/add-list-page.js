@@ -3,8 +3,9 @@ import Header from './header';
 import Nav from './nav';
 
 import {connect} from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
-import { addNewList } from '../actions';
+import { addNewList, verifyListName } from '../actions';
 
 export class AddList extends React.Component {
     constructor(props) {
@@ -22,8 +23,11 @@ export class AddList extends React.Component {
             name: this.name.value,
             description: this.description.value
         };
+        this.props.dispatch(verifyListName(newList));
+        //add below line as a 'then' in the above function
         this.props.dispatch(addNewList(newList));
         //inputs.map(input => (input.value = ""));
+        return <Redirect to="/lists/user/:id" />
     }
 
     render() {

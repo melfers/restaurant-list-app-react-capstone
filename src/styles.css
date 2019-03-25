@@ -1,0 +1,288 @@
+/* Reset default styles*/
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*Begin CSS*/
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    color: #444;
+    text-align: center;
+    padding-bottom: 60px;
+}
+
+section {
+    max-width: 50%;
+    margin: auto;
+}
+
+ul, ol {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul li {
+    display: inline;
+}
+
+a {
+    text-decoration: none;
+    all: unset;
+}
+
+p {
+    font-size: 18px;
+}
+
+header {
+    font-family: 'Coiny';
+    color: #E5D0CC;
+    background-color: #444554;
+    height: 35px;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 50px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    font-size: 14px;
+}
+
+#header-donut {
+    height: 25px;
+    margin-top: 5px;
+}
+
+.header-letters {
+    display: inline-block; 
+    vertical-align: text-top;
+}
+
+.hidden {
+    display: none;
+}
+
+h1 {
+    font-family: 'Coiny', cursive;
+}
+
+h2 {
+    font-size: 30px;
+    padding: 10px;
+}
+
+/*input[type=text] {
+    width: 50%;
+    height: 40px;
+    border: .5px solid lightgray;
+    border-radius: 5px;
+    margin: 5px;
+}*/
+
+fieldset { 
+    width: 55%;
+    margin: auto;
+}
+
+.signup {
+    width: 100%;
+    height: 40px;
+    border: .5px solid lightgray;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+input::placeholder {
+    font-size: 15px;
+    font-family: 'Quicksand'
+}
+
+#landing-header {
+    padding-top: 10%;
+    color: #444554;
+    font-size: 60px;
+}
+
+#main-donut {
+    height: 200px;
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+h4 {
+    color: #172121;
+    margin: 15px;
+}
+
+button, input[type=submit] {
+    background-color: #444554;
+    color: #E5D0CC;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 20px;
+    width: 115px;
+    margin: 15px;
+}
+
+#main-nav {
+    position: fixed;
+    bottom: 0;
+    background-color: #BFACB5;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    margin: 0;
+}
+
+#main-nav input[type=text] {
+    padding: 5px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+#main-nav img {
+    height: 35px;
+    padding-top: 7px;
+}
+
+#login-header {
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+.sub-donut {
+    height: 75px;
+}
+
+.second-header {
+    display: inline-block;
+    font-size: 60px;
+    color: #444554;
+}
+
+.lists li {
+    display: block;
+    font-size: 35px;
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 15px;
+    border: .5px solid lightgrey;
+    height: 135px;
+}
+
+#add-list-form input {
+    display: block;
+    margin: 15px auto;
+}
+
+.restaurant-card img {
+    height: 105px;
+    border-radius: 5px;
+    float: left;
+    margin-right: 20px;
+}
+
+.restaurant-card p {
+    padding: 10px;
+}
+
+.individual-restaurant-img {
+    height: 200px;
+}
+
+.back-button {
+    height: 30px;
+    float: left;
+}
+
+.save-button {
+    display: block;
+    margin: 10px auto !important;
+}
+
+textarea {
+    width: 60%;
+    height: 50px;
+    border: .5px lightgrey solid;
+    border-radius: 3px;
+}
+
+#profile-img {
+    height: 100px;
+}
+
+select {
+    height: 40px;
+    border: .5px solid lightgray;
+    border-radius: 5px;
+    margin: 15px;
+    width: 125px;
+    font-size: 15px;
+}
+
+
+
+
+
+
+
+
+
+

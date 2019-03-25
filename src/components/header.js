@@ -7,7 +7,7 @@ export function Header() {
         <div>
             <header role="banner">
                 <span className="header-letters">N </span>
-                <img src="images/donut.png" id="header-donut" alt=" " />
+                <img src={require("../images/donut.png")} id="header-donut" alt=" " />
                 <span className="header-letters"> M</span>
             </header>
         </div>

@@ -32,7 +32,7 @@ export class Lists extends React.Component {
                     id={list._id}
                     onClick={e => this.playVideo(e.currentTarget, "search")}
                 >
-                    <Link to="/lists/user/listName/:id">
+                    <Link to="/user/singleList/:userId/:listId">
                         <h2>{list.name}</h2>
                         <p>{list.description}</p>
                     </Link>

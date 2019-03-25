@@ -15,6 +15,7 @@ import ProfilePage from './components/profile-page';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from 'react-redux';
 
+
 class NomApp extends Component {
   render() {
     return (
@@ -30,12 +31,12 @@ class NomApp extends Component {
               userLists={this.props.userLists} 
               />} 
             />
-            <Route exact path="/lists/user/addList" component={AddList} />
-            <Route path="/lists/user/listname/:id" component={IndividualList} />
-            <Route path="/lists/user/listname/:id/:restaurantId" component={IndividualRestaurant} />
-            <Route path="/lists/user/listname/:id/:restaurantId/edit" component={IndividualRestaurantEdit} />
-            <Route path="/search/:cityId/:term" component={SearchPage} />
-            <Route path="/search/restaurant/:id" component={IndividualRestaurantSearch} />
+            <Route exact path="/user/add/list" component={AddList} />
+            <Route path="/user/singleList/:userId/:listId" component={IndividualList} />
+            <Route path="/list/restaurant/:restaurantId/:listId" component={IndividualRestaurant} />
+            <Route path="/list/edit/:listId/:restaurantId" component={IndividualRestaurantEdit} />
+            <Route path="/search" component={SearchPage} />
+            <Route path="/singleRestaurant/:id" component={IndividualRestaurantSearch} />
             <Route exact path="/user" component={ProfilePage} />
           </main>
         </div>
