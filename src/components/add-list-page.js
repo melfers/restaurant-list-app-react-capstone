@@ -3,9 +3,9 @@ import Header from './header';
 import Nav from './nav';
 
 import {connect} from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import { addNewList, verifyListName } from '../actions';
+import { verifyNewList } from '../actions';
 
 export class AddList extends React.Component {
     constructor(props) {
@@ -23,11 +23,8 @@ export class AddList extends React.Component {
             name: this.name.value,
             description: this.description.value
         };
-        this.props.dispatch(verifyListName(newList));
-        //add below line as a 'then' in the above function
-        this.props.dispatch(addNewList(newList));
+        this.props.dispatch(verifyNewList(newList));
         //inputs.map(input => (input.value = ""));
-        return <Redirect to="/lists/user/:id" />
     }
 
     render() {
@@ -48,6 +45,7 @@ export class AddList extends React.Component {
                         ref={input => (this.description = input)}
                         required 
                     />
+                    <button><Link to="/lists/user/:id">Back</Link></button>
                     <input type="submit" value="Save" />
                 </form>
                 <Nav />

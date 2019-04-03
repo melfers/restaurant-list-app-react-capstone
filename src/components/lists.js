@@ -16,7 +16,6 @@ export class Lists extends React.Component {
         if (this.props.loading) {
           return (
             <div className="spinner-container">
-              <Spinner className="spinner" name="circle" />
             </div>
           );
         }
@@ -24,7 +23,7 @@ export class Lists extends React.Component {
         let listArray = [];
 
         // for rendering all lists
-        if (this.props.userLists.length > 0) {
+        if (this.props && this.props.userLists && this.props.userLists.length > 0) {
             listArray = this.props.userLists.map((list, index) => (
                 <li 
                     className="restaurant-card" 

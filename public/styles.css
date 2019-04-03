@@ -240,7 +240,7 @@ button, input[type=submit] {
 }
 
 .restaurant-card p {
-    padding: 10px;
+    padding: 5px;
 }
 
 .individual-restaurant-img {
@@ -275,6 +275,15 @@ select {
     margin: 15px;
     width: 125px;
     font-size: 15px;
+}
+
+.addToListButton {
+    float: right;
+    height: 30px;
+    width: 30px;
+}
+
+.locality {
 }
 
 

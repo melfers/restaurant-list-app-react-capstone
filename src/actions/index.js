@@ -7,7 +7,6 @@ export const REQUEST = 'REQUEST';
 export const LOG_USER = 'LOG_USER';
 export const CHAT_USERS = 'CHAT_USERS';
 export const GET_LISTS = 'GET_LISTS';
-export const VERIFY_LIST_NAME = 'VERIFY_LIST_NAME';
 export const CREATE_LIST = 'CREATE_LIST';
 export const DISPLAY_LIST = 'DISPLAY_LIST';
 export const DISPLAY_SEARCH_RESULTS = 'DISPLAY_SEARCH_RESULTS';
@@ -39,11 +38,6 @@ export const chatUsers = users => ({
 export const getLists = lists => ({
   type: GET_LISTS,
   lists
-});
-
-export const verifyListName = newList => ({
-  type: VERIFY_LIST_NAME,
-  newList
 });
 
 export const createList = newList => ({
@@ -103,17 +97,16 @@ export const authSuccess = currentUser => ({
   currentUser
 });
 
-export const storeAuthInfo = (authToken, dispatch) => {
+export const storeAuthInfo = (authToken, dispatch, cb) => {
   console.log('storeauthinfo ran');
   const decodedToken = jwtDecode(authToken);
-  dispatch(setAuthToken(authToken.password));
+  dispatch(setAuthToken(authToken));
   dispatch(authSuccess(decodedToken));
-  console.log({ user: decodedToken.email });
-  dispatch(logSession({ "user": decodedToken.email }));
+  cb(decodedToken.id);
 };
 
 /*Action Functions*/
-export const login = user => dispatch => {
+export const login = (user,cb) => dispatch => {
   dispatch(request());
   fetch(`${API_ORIGIN}/auth/login`, {
     method: "POST",
@@ -128,7 +121,7 @@ export const login = user => dispatch => {
       }
       return res.json();
     })
-    .then(authToken => storeAuthInfo(authToken.token, dispatch))
+    .then(authToken => storeAuthInfo(authToken.token, dispatch, cb))
     .catch(err => {
       dispatch(fetchErr(err));
     });
@@ -148,32 +141,12 @@ export const signupUser = user => dispatch => {
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }
+      console.log(res.json());
       return res.json();
     })
     .then(authToken => storeAuthInfo(authToken.token, dispatch))
     .catch(err => {
       dispatch(fetchErr(err));
-    });
-};
-
-export const logSession = user => dispatch => {
-  console.log(user);
-  fetch(`${API_ORIGIN}/auth/userLoggedIn`, {
-    method: "POST",
-    mode: "cors",
-    headers: {
-      "content-type": "application/json"
-    },
-    body: JSON.stringify(user)
-  })
-    .then(res => {
-      if (!res.ok) {
-        return Promise.reject(res.statusText);
-      }
-      return res.json();
-    })
-    .then(res => {
-      dispatch(chatUsers(res.loggedIn));
     });
 };
 
@@ -187,7 +160,6 @@ export const getUserLists= (userId/*, token*/) => dispatch => {
     },
   })
     .then(res => {
-      console.log(res);
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }
@@ -203,9 +175,10 @@ export const getUserLists= (userId/*, token*/) => dispatch => {
 };
 
 //Verify no list exists with input name
-/*export const verifyListName = (newList) => {
+export const verifyNewList = (newList) => dispatch => {
+  const { user, name } = newList;
   dispatch(request());
-  fetch(`${API_ORIGIN}/lists/user/addList/verify`, {
+  fetch(`${API_ORIGIN}/lists/user/addList/verify/${user}/${name}`, {
     method: "GET",
     headers: {
       "content-type": "application/json"
@@ -216,11 +189,12 @@ export const getUserLists= (userId/*, token*/) => dispatch => {
   .then(data => {
       if (!data.result == isNull) {
           alert('Sorry, there is already a list with that name. Please try a new one!');
-          $('#newPlantNickname').val('');
+      } else {
+        addNewList(newList);
       }
   })
   .catch(error => console.error(error))
-}*/
+}
 
 // addNewList adds a list to All Lists for a user
 export const addNewList = (newList) => dispatch => {
@@ -273,7 +247,7 @@ export const getSingleList= (userId, listId) => dispatch => {
 };
 
 // Finds restaurants using the Zomato API
-export const searchRestaurants = (term, cityId /*token*/) => dispatch => {
+export const searchRestaurants = (cityId, term /*token*/) => dispatch => {
   dispatch(request());
   console.log(cityId, term);
   fetch(`${API_ORIGIN}/search/${cityId}/${term}`, {
@@ -290,8 +264,8 @@ export const searchRestaurants = (term, cityId /*token*/) => dispatch => {
       return res.json();
     })
     .then(data => {
-      console.log(data.restaurants);
-      dispatch(displaySearchResults(data.restaurants));
+      console.log(data);
+      dispatch(displaySearchResults(data));
     })
     .catch(err => {
       console.log(err);
@@ -371,6 +345,37 @@ export const postUserNotes = (listId, currentRestaurant, userNotes) => dispatch 
     .then(res => {
       console.log(res);
       dispatch(addUserNotes(res));
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+// Adds a single restaurant to an existing user list
+export const addRestaurantToList = (selectedList, currentRestaurant, userNotes) => dispatch => {
+  const newRestaurant = {
+    listId: selectedList,
+    restaurantInfo: currentRestaurant,
+    notes: userNotes
+  }
+  console.log(newRestaurant);
+  dispatch(request());
+  fetch(`${API_ORIGIN}/list/add/${selectedList}/${currentRestaurant.id}`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify(newRestaurant)
+  })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      return res.json();
+    })
+    .then(res => {
+      console.log(res);
+      //dispatch(addUserNotes(res));
     })
     .catch(err => {
       console.log(err);

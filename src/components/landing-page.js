@@ -7,7 +7,7 @@ export default function LandingPage() {
         <div>
             <h1 id="landing-header">Nom List</h1>
             <h4>An app that helps you track and rate restaurant visits</h4>
-            <img src="images/donut.png" id="main-donut" alt=" " />
+            <img src={require("../images/donut.png")} id="main-donut" alt=" " />
             <Link to='/auth/login'>
                 <button>Log In</button>
             </Link>

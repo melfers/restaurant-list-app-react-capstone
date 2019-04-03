@@ -4,7 +4,8 @@
   "private": true,
   "devDependencies": {
     "enzyme": "^3.8.0",
-    "react-test-renderer": "^16.1.1"
+    "react-test-renderer": "^16.1.1",
+    "redux-devtools-extension": "^2.13.8"
   },
   "dependencies": {
     "jwt-decode": "^2.2.0",
@@ -16,6 +17,7 @@
     "react-spinkit": "^3.0.0",
     "redux": "^3.6.0",
     "redux-thunk": "^2.3.0",
+    "sweetalert": "^2.1.2",
     "thunk": "0.0.1"
   },
   "scripts": {

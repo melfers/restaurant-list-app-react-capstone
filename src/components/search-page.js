@@ -13,7 +13,7 @@ export class SearchPage extends React.Component {
     const searchTerm = this.refs.searchTerm.value;
     const cityId = 306;
     //const input = this.textInput.value.trim();
-    this.props.dispatch(searchRestaurants(searchTerm, cityId));
+    this.props.dispatch(searchRestaurants(cityId, searchTerm));
     //.value = "";
   }
 

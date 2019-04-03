@@ -245,6 +245,7 @@ button, input[type=submit] {
 
 .individual-restaurant-img {
     height: 200px;
+    border-radius: 3px;
 }
 
 .back-button {
@@ -253,7 +254,7 @@ button, input[type=submit] {
 }
 
 .save-button {
-    display: block;
+    display: inline-block;
     margin: 10px auto !important;
 }
 
@@ -275,6 +276,14 @@ select {
     margin: 15px;
     width: 125px;
     font-size: 15px;
+}
+
+.thumbImg {
+    width: 105px;
+}
+
+.addListLabel {
+    padding-left: 40%;
 }
 
 

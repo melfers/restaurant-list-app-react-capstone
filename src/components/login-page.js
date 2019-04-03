@@ -2,7 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 import { login } from '../actions';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 export class LoginPage extends React.Component {
   constructor(props) {
@@ -17,20 +17,22 @@ export class LoginPage extends React.Component {
       email: this.email.value,
       password: this.password.value
     };
-    this.props.dispatch(login(user));
+    this.props.dispatch(login(user,(userID)=>{
+      this.props.history.replace(`/lists/user/${userID}`)
+    }));
     inputs.map(input => (input.value=""));
   }
 
   render() {
-    /*if (this.props.loggedIn) {
+    if (this.props.loggedIn) {
       return <Redirect to="/lists/user" />
-    }*/
+    }
 
     return (
       <section id="login-page">
         <div id="login-header">
           <h1 className="second-header">N  </h1>
-          <img src="/images/donut.png" className="sub-donut" alt=" " />
+          <img src={require("../images/donut.png")} className="sub-donut" alt=" " />
           <h1 className="second-header">  M</h1>
         </div>
         <h2>Log In</h2>
@@ -44,6 +46,7 @@ export class LoginPage extends React.Component {
                 className="loginForm"
                 ref={input => (this.email = input)}
                 className="signup"
+                value="elfers.molly@gmail.com"
                 required
               />
             </div>
@@ -54,11 +57,15 @@ export class LoginPage extends React.Component {
                 className="loginForm"
                 ref={input => (this.password = input)}
                 className="signup"
+                value="hi"
                 required
               />
             </div>
           </fieldset>
-          <input type="submit" />
+          <div>
+            <button><Link to="/">Back</Link></button>
+            <input type="submit" />
+          </div>
         </form>
       </section>
     );

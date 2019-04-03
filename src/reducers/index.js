@@ -2,8 +2,7 @@ import * as actions from "../actions";
 
 const initialState = {
     authToken: '',
-    chatUsers: [],
-    user: '5c8be3be5f197c0017522bfe',
+    user: '',
     error: null,
     loading: false,
     userLists: [],
@@ -48,7 +47,7 @@ export const reducer = (state = initialState, action) => {
     if (action.type === actions.AUTH_SUCCESS) {
         return Object.assign({}, state, {
             loading: false,
-            user: action.currentUser.email
+            user: action.currentUser.id
         });
     }
 
@@ -77,11 +76,12 @@ export const reducer = (state = initialState, action) => {
     }
 
     if (action.type === actions.DISPLAY_SEARCH_RESTAURANT) {
-        const restInfo = action.restInfo;
+        const currentRestaurant = action.currentRestaurant;
+        console.log('action',currentRestaurant);
         return Object.assign({}, state, {
             error: null,
             loading: false,
-            currentRestaurant: restInfo
+            currentRestaurant: currentRestaurant
         });
     }
 
