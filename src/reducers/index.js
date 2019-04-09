@@ -58,13 +58,13 @@ export const reducer = (state = initialState, action) => {
         });
     }
 
-    if (action.type === actions.CREATE_LIST) {
+    /*if (action.type === actions.CREATE_LIST) {
         //const list = actions.list;
         return Object.assign({}, state, {
           loading: false, 
           userLists: action.newList
         });
-    }
+    }*/
 
     if (action.type === actions.DISPLAY_SEARCH_RESULTS) {
         const searchResults = action.searchResults;
@@ -75,7 +75,7 @@ export const reducer = (state = initialState, action) => {
         });
     }
 
-    if (action.type === actions.DISPLAY_SEARCH_RESTAURANT) {
+    if (action.type === actions.DISPLAY_CURRENT_RESTAURANT) {
         const currentRestaurant = action.currentRestaurant;
         console.log('action',currentRestaurant);
         return Object.assign({}, state, {
@@ -85,10 +85,19 @@ export const reducer = (state = initialState, action) => {
         });
     }
 
-    if (action.type === actions.DISPLAY_LIST_RESTAURANT) {
-        const currentRestaurant = action.displayRestaurant.currentRestaurant;
+    /*if (action.type === actions.DISPLAY_LIST_RESTAURANT) {
+        const currentRestaurant = action.displayRestaurant;
         return Object.assign({}, state, {
             currentRestaurant: currentRestaurant
+        });
+    }*/
+
+    if (action.type === actions.DISPLAY_LIST) {
+        const currentList = action.currentList;
+        return Object.assign({}, state, {
+            error: null,
+            loading: false,
+            currentList: currentList
         });
     }
 

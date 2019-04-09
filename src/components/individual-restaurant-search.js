@@ -1,16 +1,16 @@
 import React from 'react';
 import Header from './header';
 import Nav from './nav';
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { getUserLists, addRestaurantToList, pullRestaurantInfo } from '../actions';
 
 export class IndividualRestaurantSearch extends React.Component{
-  /*constructor(props) {
+  constructor(props) {
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
-  }*/
+  }
 
   componentDidMount(){
     let userId = this.props.user;
@@ -23,11 +23,14 @@ export class IndividualRestaurantSearch extends React.Component{
   onSubmit(e) {
     e.preventDefault();
     const currentRestaurant = this.props.currentRestaurant;
+    const listName = document.querySelector(`option[value="${this.listAdd.value}"]`).getAttribute("name");
     const userNotes = "";
     const selectedList = this.listAdd.value;
-    console.log(selectedList, currentRestaurant);
+    console.log(selectedList, currentRestaurant, listName);
 
-    this.props.dispatch(addRestaurantToList(selectedList, currentRestaurant, userNotes));
+    this.props.dispatch(addRestaurantToList(selectedList, currentRestaurant, userNotes, listName, ()=>{
+        this.props.history.push(`/singleList/${selectedList}`);
+    }));
   }
 
 
@@ -38,10 +41,11 @@ export class IndividualRestaurantSearch extends React.Component{
         <option 
           value={list._id} 
           key={index}
+          name={list.name}
           >{list.name}</option>
       ));
     }
-
+    let finalImage = (this.props.currentRestaurant.featured_image !== '') ? this.props.currentRestaurant.featured_image : require('../images/stock-donut.jpg');
     return (
       (this.props.currentRestaurant.location !== undefined) ? 
         <div>
@@ -49,7 +53,7 @@ export class IndividualRestaurantSearch extends React.Component{
           <section className="singleRestaurant">
             <h2>{this.props.currentRestaurant.name}</h2>
             <div id="img-placeholder">
-              <img src={this.props.currentRestaurant.featured_image} className="individual-restaurant-img" alt="featured-restaurant" />
+              <img src={finalImage} className="individual-restaurant-img" alt="featured-restaurant" />
             </div>
             <p>{this.props.currentRestaurant.location.address}</p>
             <p>{this.props.currentRestaurant.location.locality}</p>
@@ -66,14 +70,14 @@ export class IndividualRestaurantSearch extends React.Component{
               </div>
               <div>
                 <button><Link to="/search">Back</Link></button>
-                <input 
-                  type="submit" 
-                  value="Save" 
-                  className="save-button"
+                  <input 
+                    type="submit" 
+                    value="Save" 
+                    className="save-button"
                   />
               </div>
             </form>
-          : <Link to="/auth/login" className="save-button">Login to Save</Link>}
+          : <Link to="/auth/login"><button className="save-button">Log In to Save</button></Link>}
           </section>
           <Nav />
         </div>

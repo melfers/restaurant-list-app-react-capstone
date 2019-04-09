@@ -22,7 +22,7 @@ export class Nav extends React.Component {
                 <Link to="/search"><img src={require("../images/magnifier.png")} alt=" " /></Link>
               </li>
               <li>
-                <Link to="/lists/user/:id" onClick={() => this.getAllLists()}>
+                <Link to={`/lists/user/${this.props.user}`}>
                 <img src={require("../images/list.png")} alt=" " /></Link>
               </li>
             </ul>

@@ -7,9 +7,11 @@ export function Header() {
         <div>
             <Link to="/">
                 <header role="banner">
-                    <span className="header-letters">N </span>
-                    <img src={require("../images/donut.png")} id="header-donut" alt=" " />
-                    <span className="header-letters"> M</span>
+                    <div id="top-header">
+                        <span className="header-letters">N </span>
+                        <img src={require("../images/donut.png")} id="header-donut" alt=" " />
+                        <span className="header-letters"> M</span>
+                    </div>
                 </header>
             </Link>
         </div>

@@ -91,7 +91,6 @@ header {
     height: 35px;
     padding: 0;
     margin: 0;
-    margin-bottom: 50px;
 }
 
 label {
@@ -102,12 +101,11 @@ label {
 
 #header-donut {
     height: 25px;
-    margin-top: 5px;
 }
 
 .header-letters {
-    display: inline-block; 
-    vertical-align: text-top;
+    display: inline-block;
+    padding: 2px;
 }
 
 .hidden {
@@ -202,8 +200,11 @@ button, input[type=submit] {
 }
 
 #login-header {
+    display: flex;
     margin-top: 50px;
     margin-bottom: 25px;
+    align-items: center;
+    justify-content: center;
 }
 
 .sub-donut {
@@ -224,7 +225,7 @@ button, input[type=submit] {
     margin-bottom: 10px;
     padding: 15px;
     border: .5px solid lightgrey;
-    height: 135px;
+    min-height: 150px;
 }
 
 #add-list-form input {
@@ -233,14 +234,16 @@ button, input[type=submit] {
 }
 
 .restaurant-card img {
-    height: 105px;
+    height: 90%;
     border-radius: 5px;
     float: left;
     margin-right: 20px;
+    vertical-align: baseline;
+    display: flex; 
 }
 
 .restaurant-card p {
-    padding: 10px;
+    padding: 5px;
 }
 
 .individual-restaurant-img {
@@ -285,6 +288,18 @@ select {
 .addListLabel {
     padding-left: 40%;
 }
+
+#top-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5px;
+}
+
+.rest-info {
+    padding-left: 10px;
+}
+
 
 
 

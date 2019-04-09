@@ -43,9 +43,8 @@ export class LoginPage extends React.Component {
               <label htmlFor="email">Email:</label>
               <input 
                 type="email"
-                className="loginForm"
+                className="loginForm signup"
                 ref={input => (this.email = input)}
-                className="signup"
                 value="elfers.molly@gmail.com"
                 required
               />

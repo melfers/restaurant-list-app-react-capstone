@@ -29,9 +29,8 @@ export class Lists extends React.Component {
                     className="restaurant-card" 
                     key={index}
                     id={list._id}
-                    onClick={e => this.playVideo(e.currentTarget, "search")}
                 >
-                    <Link to="/user/singleList/:userId/:listId">
+                    <Link to={`/singleList/${list._id}`}>
                         <h2>{list.name}</h2>
                         <p>{list.description}</p>
                     </Link>

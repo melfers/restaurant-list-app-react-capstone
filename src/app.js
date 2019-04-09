@@ -5,7 +5,7 @@ import SignupPage from './components/signup-page';
 import LoginPage from './components/login-page';
 import AllLists from './components/all-lists-page';
 import AddList from './components/add-list-page';
-import { IndividualList } from './components/individual-list';
+import IndividualList from './components/individual-list';
 import IndividualRestaurant from './components/individual-restaurant';
 import IndividualRestaurantEdit from './components/individual-restaurant-edit';
 import IndividualRestaurantSearch from './components/individual-restaurant-search';
@@ -32,8 +32,8 @@ class NomApp extends Component {
               />} 
             />
             <Route exact path="/user/add/list" component={AddList} />
-            <Route path="/user/singleList/:userId/:listId" component={IndividualList} />
-            <Route path="/list/restaurant/:restaurantId/:listId" component={IndividualRestaurant} />
+            <Route path="/singleList/:listId" component={IndividualList} />
+            <Route path="/restaurant/:restaurantId" component={IndividualRestaurant} />
             <Route path="/list/edit/:listId/:restaurantId" component={IndividualRestaurantEdit} />
             <Route path="/search" component={SearchPage} />
             <Route path="/singleRestaurant/:id" component={IndividualRestaurantSearch} />

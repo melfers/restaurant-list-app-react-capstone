@@ -23,7 +23,9 @@ export class AddList extends React.Component {
             name: this.name.value,
             description: this.description.value
         };
-        this.props.dispatch(verifyNewList(newList));
+        this.props.dispatch(verifyNewList(newList, () => {
+            this.props.history.push(`/lists/user/${this.user}`);
+        }));
         //inputs.map(input => (input.value = ""));
     }
 
