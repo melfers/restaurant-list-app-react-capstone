@@ -118,7 +118,7 @@ h1 {
 
 h2 {
     font-size: 30px;
-    padding: 10px;
+    padding: 5px;
 }
 
 /*input[type=text] {
@@ -233,15 +233,6 @@ button, input[type=submit] {
     margin: 15px auto;
 }
 
-.restaurant-card img {
-    width: 105px;
-    border-radius: 5px;
-    float: left;
-    margin-right: 20px;
-    vertical-align: baseline;
-    display: flex; 
-}
-
 .restaurant-card p {
     padding: 5px;
 }
@@ -292,8 +283,27 @@ select {
     padding-top: 5px;
 }
 
+.restaurant-container {
+    overflow: hidden;
+    display: table;
+}
+
+.restaurant-img-container {
+    width: 30%;
+    vertical-align: middle;
+    display: table-cell;
+}
+
 .rest-info {
-    padding-left: 10px;
+    width: 70%;
+    display: table-cell;
+    padding-left: 20px;
+}
+
+.thumbImg {
+    width: 105px;
+    border-radius: 5px;
+    height: 105px;
 }
 
 

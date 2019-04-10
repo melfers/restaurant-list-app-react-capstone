@@ -13,7 +13,6 @@ export class IndividualList extends React.Component {
 
     componentWillMount() {
         let { listId } = this.props.match.params;
-        console.log(listId);
         this.props.dispatch(pullSingleList(listId));
     }
 
@@ -38,18 +37,22 @@ export class IndividualList extends React.Component {
 
         if(this.props.currentList!== undefined && this.props.currentList.length > 0){
             restaurantArray = this.props.currentList.map((restaurant, index) => {
-                let finalImage = (restaurant.featured_image !== '') ? restaurant.featured_image : require('../images/stock-donut.jpg');
+                let finalImage = (restaurant.thumb !== '') ? restaurant.thumb : require('../images/stock-donut.jpg');
                 return(
                     <Link to={`/restaurant/${restaurant._id}`}>
                         <li 
                             className="restaurant-card"
                             id={restaurant._id}
                             key={index}
-                        >
-                            <img src={finalImage} alt="thumbnail" className="thumbImg"  />
-                            <div className="rest-info">
-                                <h2>{restaurant.name}</h2>
-                                <p>{restaurant.cuisines}</p>
+                        >   
+                            <div className="restaurant-container">
+                                <div className="restaurant-img-container">
+                                    <img src={finalImage} alt="thumbnail" className="thumbImg"  />
+                                </div>
+                                <div className="rest-info">
+                                    <h2>{restaurant.name}</h2>
+                                    <p>{restaurant.cuisines}</p>
+                                </div>
                             </div>
                         </li>
                     </Link>

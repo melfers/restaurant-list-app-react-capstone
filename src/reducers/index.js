@@ -77,7 +77,6 @@ export const reducer = (state = initialState, action) => {
 
     if (action.type === actions.DISPLAY_CURRENT_RESTAURANT) {
         const currentRestaurant = action.currentRestaurant;
-        console.log('action',currentRestaurant);
         return Object.assign({}, state, {
             error: null,
             loading: false,

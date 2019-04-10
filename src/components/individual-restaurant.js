@@ -12,14 +12,12 @@ export class IndividualRestaurant extends React.Component {
 
   componentWillMount(){
     let { restaurantId } = this.props.match.params;
-    console.log(restaurantId);
     this.props.dispatch(getRestaurantInfoList(restaurantId));
   };
 
   deleteSelectedRestaurant(){
     let listId = this.props.currentRestaurant.listId;
     let { restaurantId } = this.props.match.params;
-    console.log(restaurantId);
     this.props.dispatch(deleteRestaurantFromList(restaurantId, ()=>{
       this.props.history.push(`/singleList/${listId}`);
     }));

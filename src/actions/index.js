@@ -96,7 +96,6 @@ export const authSuccess = currentUser => ({
 });
 
 export const storeAuthInfo = (authToken, dispatch, cb) => {
-  console.log('storeauthinfo ran');
   const decodedToken = jwtDecode(authToken);
   dispatch(setAuthToken(authToken));
   dispatch(authSuccess(decodedToken));
@@ -126,7 +125,6 @@ export const login = (user,cb) => dispatch => {
 };
 
 export const signupUser = user => dispatch => {
-  console.log(user);
   dispatch(request());
   fetch(`${API_ORIGIN}/auth/signup`, {
     method: "POST",
@@ -139,7 +137,6 @@ export const signupUser = user => dispatch => {
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }
-      console.log(res.json());
       return res.json();
     })
     .then(authToken => storeAuthInfo(authToken.token, dispatch))
@@ -164,7 +161,6 @@ export const getUserLists= (userId/*, token*/) => dispatch => {
       return res.json();
     })
     .then(res => {
-      console.log(res);
       dispatch(getLists(res));
     })
     .catch(err => {
@@ -175,7 +171,6 @@ export const getUserLists= (userId/*, token*/) => dispatch => {
 //Verify no list exists with input name
 export const verifyNewList = (newList) => dispatch => {
   const { user, name } = newList;
-  console.log(newList);
   dispatch(request());
   fetch(`${API_ORIGIN}/addList/verify/${user}`, {
     method: "GET",
@@ -212,7 +207,6 @@ export const addNewList = (newList, cb) => dispatch => {
       return res.json();
     })
     .then(res => {
-      console.log(res);
       cb()
     })
     .catch(err => {
@@ -223,6 +217,7 @@ export const addNewList = (newList, cb) => dispatch => {
 // Gets a single list for a user
 export const getSingleList= (listId) => dispatch => {
   dispatch(request());
+  let listArray = [{"listId": listId}, {"listName": }];
   fetch(`${API_ORIGIN}/singleList/${listId}`, {
     method: "GET",
     headers: {
@@ -230,7 +225,6 @@ export const getSingleList= (listId) => dispatch => {
     },
   })
     .then(res => {
-      console.log(res);
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }
@@ -256,7 +250,6 @@ export const deleteIndividualList = (listId, cb) => dispatch => {
     }
   })
     .then(res => {
-      console.log(res)
       dispatch(deleteList());
     })
     .than(cb())
@@ -268,7 +261,6 @@ export const deleteIndividualList = (listId, cb) => dispatch => {
 // Finds restaurants using the Zomato API
 export const searchRestaurants = (cityId, term /*token*/) => dispatch => {
   dispatch(request());
-  console.log(cityId, term);
   fetch(`${API_ORIGIN}/search/${cityId}/${term}`, {
     method: "GET",
     headers: {
@@ -283,7 +275,6 @@ export const searchRestaurants = (cityId, term /*token*/) => dispatch => {
       return res.json();
     })
     .then(data => {
-      console.log(data);
       dispatch(displaySearchResults(data));
     })
     .catch(err => {
