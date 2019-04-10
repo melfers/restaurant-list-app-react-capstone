@@ -72,9 +72,8 @@ export const addUserNotes = (listId, restaurantId, userNotes) => ({
   userNotes
 });
 
-export const deleteRestaurant = (restaurantId) => ({
-  type: DELETE_RESTAURANT,
-  restaurantId
+export const deleteRestaurant = () => ({
+  type: DELETE_RESTAURANT
 });
 
 export const fetchErr = err => ({
@@ -214,7 +213,7 @@ export const addNewList = (newList, cb) => dispatch => {
     })
     .then(res => {
       console.log(res);
-      cb());
+      cb()
     })
     .catch(err => {
       console.log(err);
@@ -247,7 +246,7 @@ export const getSingleList= (listId) => dispatch => {
 };
 
 //Deletes a list
-export const deleteIndividualList = (listId) => dispatch => {
+export const deleteIndividualList = (listId, cb) => dispatch => {
   dispatch(request);
   fetch(`${API_ORIGIN}/deleteList/${listId}`, {
     method: "DELETE",
@@ -258,8 +257,9 @@ export const deleteIndividualList = (listId) => dispatch => {
   })
     .then(res => {
       console.log(res)
-      dispatch(deleteList(listId));
+      dispatch(deleteList());
     })
+    .than(cb())
     .catch(err => {
       console.log(err);
     });
@@ -419,9 +419,6 @@ export const addRestaurantToList = (selectedList, currentRestaurant, userNotes, 
       }
       return res.json();
     })
-    /*.then(() => {
-      dispatch(pullSingleList(selectedList))
-    })*/
     .then(cb())
     .catch(err => {
       console.log(err);
@@ -429,9 +426,9 @@ export const addRestaurantToList = (selectedList, currentRestaurant, userNotes, 
 };
 
 //Deletes an individual restaurant from a list
-export const deleteRestaurantFromList = (currentRestaurant) => dispatch => {
+export const deleteRestaurantFromList = (currentRestaurant, cb) => dispatch => {
   dispatch(request);
-  fetch(`${API_ORIGIN}/lists/user/listname/:id/${currentRestaurant}/edit`, {
+  fetch(`${API_ORIGIN}/restaurant/delete/${currentRestaurant}`, {
     method: "DELETE",
     mode: "cors",
     headers: {
@@ -439,8 +436,9 @@ export const deleteRestaurantFromList = (currentRestaurant) => dispatch => {
     }
   })
     .then(res => {
-      dispatch(deleteRestaurantFromList(currentRestaurant));
+      dispatch(deleteRestaurant());
     })
+    .then(cb())
     .catch(err => {
       console.log(err);
     });

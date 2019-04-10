@@ -1,11 +1,10 @@
 import React from 'react';
 import Header from './header';
 import Nav from './nav';
-
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { verifyNewList } from '../actions';
+import { addNewList } from '../actions';
 
 export class AddList extends React.Component {
     constructor(props) {
@@ -23,7 +22,7 @@ export class AddList extends React.Component {
             name: this.name.value,
             description: this.description.value
         };
-        this.props.dispatch(verifyNewList(newList, () => {
+        this.props.dispatch(addNewList(newList, () => {
             this.props.history.push(`/lists/user/${this.user}`);
         }));
         //inputs.map(input => (input.value = ""));

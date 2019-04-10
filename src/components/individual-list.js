@@ -25,8 +25,12 @@ export class IndividualList extends React.Component {
         }));
     }*/
 
-    deleteSelectedList(target) {
-        this.props.dispatch(deleteIndividualList(this.props.currentList));
+    deleteSelectedList() {
+        let { listId } = this.props.match.params;
+        console.log(listId);
+        this.props.dispatch(deleteIndividualList(listId, () => {
+            this.props.history.push(`/lists/user/${this.props.user}`);
+        }));
     }
 
     render() {
@@ -37,13 +41,16 @@ export class IndividualList extends React.Component {
                 let finalImage = (restaurant.featured_image !== '') ? restaurant.featured_image : require('../images/stock-donut.jpg');
                 return(
                     <Link to={`/restaurant/${restaurant._id}`}>
-                        <li className="restaurant-card"
+                        <li 
+                            className="restaurant-card"
                             id={restaurant._id}
                             key={index}
                         >
-                            <img src={finalImage} className="thumbImg" alt="featured-restaurant" />
-                            <h2>{restaurant.name}</h2>
-                            <p>{restaurant.cuisines}</p>
+                            <img src={finalImage} alt="thumbnail" className="thumbImg"  />
+                            <div className="rest-info">
+                                <h2>{restaurant.name}</h2>
+                                <p>{restaurant.cuisines}</p>
+                            </div>
                         </li>
                     </Link>
                 )
@@ -53,11 +60,13 @@ export class IndividualList extends React.Component {
         return (
         <div>
             <Header />
-            <section className="lists">
-                <h2>List Name Goes Here</h2>
-                {restaurantArray}
+            <section>
+                <h2>{this.props.currentList.length ? this.props.currentList[0].listName : "To search for a restaurant, click the search icon below."}</h2>
+                <ul className="lists"> 
+                    {restaurantArray}
+                </ul> 
                 <button
-                    onClick={(e => this.deleteSelectedList(e.currentTarget))}
+                    onClick={(e => this.deleteSelectedList())}
                 >
                 Delete List
                 </button>
@@ -69,6 +78,7 @@ export class IndividualList extends React.Component {
 }
 
 export const mapStateToProps = (state, props) => ({
+    user: state.user,
     currentList: state.currentList,
     error: state.error
 });

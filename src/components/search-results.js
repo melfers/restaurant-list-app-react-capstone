@@ -30,7 +30,9 @@ export class SearchResults extends React.Component {
                             id={item.restaurant.id}
                             key={index}
                         >
-                            <img src={finalImage} alt="thumbnail" className="thumbImg" />
+                            <div>
+                                <img src={finalImage} alt="thumbnail" className="thumbImg" />
+                            </div>
                             <div className="rest-info">
                                 <h2>{item.restaurant.name}</h2>
                                 <p className="locality">{item.restaurant.location.locality}</p>

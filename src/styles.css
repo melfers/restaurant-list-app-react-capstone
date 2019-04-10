@@ -234,7 +234,7 @@ button, input[type=submit] {
 }
 
 .restaurant-card img {
-    height: 90%;
+    width: 105px;
     border-radius: 5px;
     float: left;
     margin-right: 20px;
@@ -279,10 +279,6 @@ select {
     margin: 15px;
     width: 125px;
     font-size: 15px;
-}
-
-.thumbImg {
-    width: 105px;
 }
 
 .addListLabel {

@@ -113,7 +113,7 @@ export const reducer = (state = initialState, action) => {
     if (action.type === actions.DELETE_RESTAURANT) {
         return Object.assign({}, state, {
           loading: false,
-          currentList: state.currentList.filter(list => list._id !== action.id)
+          currentRestaurant: []
         });
     
     }
