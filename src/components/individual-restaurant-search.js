@@ -14,7 +14,6 @@ export class IndividualRestaurantSearch extends React.Component{
 
   componentDidMount(){
     let userId = this.props.user;
-    console.log(userId);
     this.props.dispatch(getUserLists(userId));
     let { id } = this.props.match.params;
     this.props.dispatch(pullRestaurantInfo(id));
@@ -26,7 +25,6 @@ export class IndividualRestaurantSearch extends React.Component{
     const listName = document.querySelector(`option[value="${this.listAdd.value}"]`).getAttribute("name");
     const userNotes = "";
     const selectedList = this.listAdd.value;
-    console.log(selectedList, currentRestaurant, listName);
 
     this.props.dispatch(addRestaurantToList(selectedList, currentRestaurant, userNotes, listName, ()=>{
         this.props.history.push(`/singleList/${selectedList}`);
@@ -50,19 +48,20 @@ export class IndividualRestaurantSearch extends React.Component{
       (this.props.currentRestaurant.location !== undefined) ? 
         <div>
           <Header />
-          <section className="singleRestaurant">
+          <section className="single-restaurant">
             <h2>{this.props.currentRestaurant.name}</h2>
             <div id="img-placeholder">
               <img src={finalImage} className="individual-restaurant-img" alt="featured-restaurant" />
             </div>
             <p>{this.props.currentRestaurant.location.address}</p>
             <p>{this.props.currentRestaurant.location.locality}</p>
-            <p>{this.props.currentRestaurant.cuisines}</p>
+            <p className="cuisines">{this.props.currentRestaurant.cuisines}</p>
             {this.props.user!="" ? 
             <form onSubmit={e=>this.onSubmit(e)}>
               <div className="edit-restaurant-info">
                   <label htmlFor="select" className="addListLabel">Add to list:</label>
                   <select
+                    className="select-list"
                     ref={input => (this.listAdd = input)}
                   >
                     {searchList}
@@ -73,7 +72,7 @@ export class IndividualRestaurantSearch extends React.Component{
                   <input 
                     type="submit" 
                     value="Save" 
-                    className="save-button"
+                    id="save-search"
                   />
               </div>
             </form>

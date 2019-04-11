@@ -1,25 +1,23 @@
 import React from 'react';
-import Spinner from 'react-spinkit';
 import {connect} from 'react-redux';
-import { getUserLists } from '../actions';
+import { getUserLists, saveSelectedList } from '../actions';
 
 import { Link } from 'react-router-dom';
  
 export class Lists extends React.Component {
     componentDidMount(){
         let userId = this.props.user;
-        console.log(userId);
         this.props.dispatch(getUserLists(userId));
     };
 
-    render() {
-        if (this.props.loading) {
-          return (
-            <div className="spinner-container">
-            </div>
-          );
-        }
+    saveRestName(target){
+        console.log(target);
+        let listName = target.name;
+        console.log(listName);
+        this.props.dispatch(saveSelectedList(listName));
+    }
 
+    render() {
         let listArray = [];
 
         // for rendering all lists
@@ -29,6 +27,8 @@ export class Lists extends React.Component {
                     className="restaurant-card" 
                     key={index}
                     id={list._id}
+                    name={list.name}
+                    onClick={(e => this.saveRestName(e.target))}
                 >
                     <Link to={`/singleList/${list._id}`}>
                         <h2>{list.name}</h2>

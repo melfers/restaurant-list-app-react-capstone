@@ -142,6 +142,14 @@ fieldset {
     margin: 5px;
 }
 
+.search {
+    height: 40px;
+    width: 50%;
+    border: .5px solid lightgray;
+    border-radius: 5px;
+    padding-top: 7px;
+}
+
 input::placeholder {
     font-size: 15px;
     font-family: 'Quicksand'
@@ -228,9 +236,10 @@ button, input[type=submit] {
     min-height: 150px;
 }
 
-#add-list-form input {
+#add-list-form .signup {
     display: block;
     margin: 15px auto;
+    width: 30%;
 }
 
 .restaurant-card p {
@@ -239,7 +248,12 @@ button, input[type=submit] {
 
 .individual-restaurant-img {
     height: 200px;
-    border-radius: 3px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.single-restaurant p {
+    padding: 5px;
 }
 
 .back-button {
@@ -274,13 +288,18 @@ select {
 
 .addListLabel {
     padding-left: 40%;
+    margin-top: 20px;
 }
 
 #top-header {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 5px;
+    padding: 5px 0px;
+}
+
+header {
+    margin-bottom: 20px;
 }
 
 .restaurant-container {
@@ -289,13 +308,11 @@ select {
 }
 
 .restaurant-img-container {
-    width: 30%;
     vertical-align: middle;
     display: table-cell;
 }
 
 .rest-info {
-    width: 70%;
     display: table-cell;
     padding-left: 20px;
 }
@@ -304,6 +321,14 @@ select {
     width: 105px;
     border-radius: 5px;
     height: 105px;
+}
+
+.cuisines {
+    font-style: italic;
+}
+
+.select-list {
+    margin-top: 5px;
 }
 
 

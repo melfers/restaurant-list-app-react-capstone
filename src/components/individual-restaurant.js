@@ -28,20 +28,21 @@ export class IndividualRestaurant extends React.Component {
     return (
       <div>
         <Header />
-        <img src="images/back-arrow.png" className="back-button" alt=" " />
-        <h2>{this.props.currentRestaurant.name}</h2>
-        <div id="img-placeholder">
-          <img src={finalImage} className="individual-restaurant-img" alt="featured-restaurant" />
-        </div>
-        <p>{(this.props.currentRestaurant.location!== undefined) ? this.props.currentRestaurant.location.address : ''}</p>
-        <p>{(this.props.currentRestaurant.location!== undefined) ? this.props.currentRestaurant.location.locality : ''}</p>
-        <p>{this.props.currentRestaurant.cuisines}</p>
-        <Link to={`/singleList/${this.props.currentRestaurant.listId}`}>
-          <button>Back</button>
-        </Link>
-          <button
-            onClick={(e => this.deleteSelectedRestaurant())}
-            >Delete</button>
+        <section className="single-restaurant">
+          <h2>{this.props.currentRestaurant.name}</h2>
+          <div id="img-placeholder">
+            <img src={finalImage} className="individual-restaurant-img" alt="featured-restaurant" />
+          </div>
+          <p>{(this.props.currentRestaurant.location!== undefined) ? this.props.currentRestaurant.location.address : ''}</p>
+          <p>{(this.props.currentRestaurant.location!== undefined) ? this.props.currentRestaurant.location.locality : ''}</p>
+          <p className="cuisines">{this.props.currentRestaurant.cuisines}</p>
+          <Link to={`/singleList/${this.props.currentRestaurant.listId}`}>
+            <button>Back</button>
+          </Link>
+            <button
+              onClick={(e => this.deleteSelectedRestaurant())}
+              >Delete</button>
+        </section>
         <Nav />
       </div>
     );

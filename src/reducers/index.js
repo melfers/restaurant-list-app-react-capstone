@@ -7,6 +7,7 @@ const initialState = {
     loading: false,
     userLists: [],
     currentList: [],
+    currentListName: '',
     searchResults: [],
     currentRestaurant: [],
     restaurantUserNotes: []
@@ -58,13 +59,12 @@ export const reducer = (state = initialState, action) => {
         });
     }
 
-    /*if (action.type === actions.CREATE_LIST) {
-        //const list = actions.list;
+    if (action.type === actions.SAVE_LIST_NAME) {
         return Object.assign({}, state, {
           loading: false, 
-          userLists: action.newList
+          currentListName: action.listName
         });
-    }*/
+    }
 
     if (action.type === actions.DISPLAY_SEARCH_RESULTS) {
         const searchResults = action.searchResults;

@@ -37,12 +37,14 @@ export class AddList extends React.Component {
                     <input 
                         type="text" 
                         placeholder="  Name" 
+                        className="signup"
                         ref={input => (this.name = input)}
                         required 
                     />
                     <input 
                         type="text" 
                         placeholder="  Description" 
+                        className="signup"
                         ref={input => (this.description = input)}
                         required 
                     />

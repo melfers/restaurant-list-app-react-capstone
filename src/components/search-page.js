@@ -26,6 +26,7 @@ export class SearchPage extends React.Component {
           <form onSubmit={ (e) => this.onSubmit(e)}>
             <input 
                 type="text"
+                className="search"
                 ref="searchTerm"
             />
             <input type="submit" value="Search" />

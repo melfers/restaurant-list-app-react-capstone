@@ -8,6 +8,7 @@ export const LOG_USER = 'LOG_USER';
 export const CHAT_USERS = 'CHAT_USERS';
 export const GET_LISTS = 'GET_LISTS';
 export const CREATE_LIST = 'CREATE_LIST';
+export const SAVE_LIST_NAME = 'SAVE_LIST_NAME';
 export const DISPLAY_LIST = 'DISPLAY_LIST';
 export const DELETE_LIST = 'DELETE_LIST';
 export const DISPLAY_SEARCH_RESULTS = 'DISPLAY_SEARCH_RESULTS';
@@ -40,10 +41,10 @@ export const getLists = lists => ({
   lists
 });
 
-/*export const createList = newList => ({
-  type: CREATE_LIST,
-  newList
-});*/
+export const saveListName = listName => ({
+  type: SAVE_LIST_NAME,
+  listName
+});
 
 export const displayList = currentList => ({
   type: DISPLAY_LIST,
@@ -214,10 +215,14 @@ export const addNewList = (newList, cb) => dispatch => {
     });
 };
 
+// Saves the name of a selected list to display individual list name
+export const saveSelectedList = (listName) => dispatch => {
+  dispatch(saveListName(listName));
+}
+
 // Gets a single list for a user
 export const getSingleList= (listId) => dispatch => {
   dispatch(request());
-  let listArray = [{"listId": listId}, {"listName": }];
   fetch(`${API_ORIGIN}/singleList/${listId}`, {
     method: "GET",
     headers: {

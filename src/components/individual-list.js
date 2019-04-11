@@ -11,7 +11,7 @@ export class IndividualList extends React.Component {
         super(props);
     }
 
-    componentWillMount() {
+    componentDidMount() {
         let { listId } = this.props.match.params;
         this.props.dispatch(pullSingleList(listId));
     }
@@ -26,7 +26,6 @@ export class IndividualList extends React.Component {
 
     deleteSelectedList() {
         let { listId } = this.props.match.params;
-        console.log(listId);
         this.props.dispatch(deleteIndividualList(listId, () => {
             this.props.history.push(`/lists/user/${this.props.user}`);
         }));
@@ -64,7 +63,7 @@ export class IndividualList extends React.Component {
         <div>
             <Header />
             <section>
-                <h2>{this.props.currentList.length ? this.props.currentList[0].listName : "To search for a restaurant, click the search icon below."}</h2>
+                <h2>{this.props.currentListName}</h2>
                 <ul className="lists"> 
                     {restaurantArray}
                 </ul> 
@@ -83,6 +82,7 @@ export class IndividualList extends React.Component {
 export const mapStateToProps = (state, props) => ({
     user: state.user,
     currentList: state.currentList,
+    currentListName: state.currentListName,
     error: state.error
 });
 

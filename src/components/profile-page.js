@@ -1,25 +1,19 @@
 import React from 'react';
-
+import Header from './header';
+import Nav from './nav';
 import {connect} from 'react-redux';
 
 export function ProfilePage(props) {
     return (
       <div>
+        <Header />
         <div>
-          <img src="images/user.png" id="profile-img" alt=" " />
+          <img src={require("../images/user.png")} id="profile-img" alt=" " />
         </div>
-        <h2>{this.props.user.name}</h2>
+        <h2>Hi Molly!</h2>
         <p>You've visited 48 restaurants</p>
-        <form>
-          <label htmlFor="select">Select City:</label>
-            <select>
-              <option value="sf">San Francisco</option>
-              <option value="ny">New York</option>
-              <option value="chi">Chicago</option>
-              <option value="la">Los Angeles</option>
-            </select>
-          <input type="submit" value="Save" className="save-button" />
-        </form>
+        <button>Log Out</button>
+        <Nav />
       </div>
     );
 }
