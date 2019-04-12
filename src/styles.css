@@ -331,6 +331,17 @@ header {
     margin-top: 5px;
 }
 
+.list li {
+    background-color: #E5D0CC;
+    text-align: center;
+    width: 80%;
+    padding-top: 3%;
+    border-radius: 3px;
+    margin: auto;
+    margin-top: 10px;
+    min-height: 110px;
+}
+
 
 
 

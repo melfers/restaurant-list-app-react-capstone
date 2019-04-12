@@ -1,35 +1,40 @@
-import React from 'react';
+import React from "react";
 
-import {connect} from 'react-redux';
-import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-import { getLists } from '../actions/index';
+import { getLists } from "../actions/index";
 
 export class Nav extends React.Component {
   getAllLists() {
-    this.props.dispatch(getLists(this.props.user));
+    this.props.dispatch(getLists(this.props.user.id));
   }
 
-  render() {  
+  render() {
     return (
-        <div>
-          <nav role="navigation" id="bottom-nav">
-            <ul id="main-nav">
-              <li>
-                <Link to="/user"><img src={require("../images/user.png")} alt=" " /></Link>
-              </li>
-              <li>
-                <Link to="/search"><img src={require("../images/magnifier.png")} alt=" " /></Link>
-              </li>
-              <li>
-                <Link to={`/lists/user/${this.props.user}`}>
-                <img src={require("../images/list.png")} alt=" " /></Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
+      <div>
+        <nav role="navigation" id="bottom-nav">
+          <ul id="main-nav">
+            <li>
+              <Link to="/user">
+                <img src={require("../images/user.png")} alt=" " />
+              </Link>
+            </li>
+            <li>
+              <Link to="/search">
+                <img src={require("../images/magnifier.png")} alt=" " />
+              </Link>
+            </li>
+            <li>
+              <Link to={`/lists/user/${this.props.user.id}`}>
+                <img src={require("../images/list.png")} alt=" " />
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
     );
-  };
+  }
 }
 
 export const mapStateToProps = state => ({

@@ -1,34 +1,24 @@
-import jwtDecode from 'jwt-decode';
-import { API_ORIGIN } from '../config';
-import { isNull } from 'util';
+import jwtDecode from "jwt-decode";
+import { API_ORIGIN } from "../config";
+import { isNull } from "util";
 
 /* Action Types */
-export const REQUEST = 'REQUEST';
-export const LOG_USER = 'LOG_USER';
-export const CHAT_USERS = 'CHAT_USERS';
-export const GET_LISTS = 'GET_LISTS';
-export const CREATE_LIST = 'CREATE_LIST';
-export const SAVE_LIST_NAME = 'SAVE_LIST_NAME';
-export const DISPLAY_LIST = 'DISPLAY_LIST';
-export const DELETE_LIST = 'DELETE_LIST';
-export const DISPLAY_SEARCH_RESULTS = 'DISPLAY_SEARCH_RESULTS';
-export const DISPLAY_CURRENT_RESTAURANT = 'DISPLAY_SEARCH_RESTAURANT';
-export const ADD_USER_NOTES = 'ADD_USER_NOTES';
-export const DELETE_RESTAURANT = 'DELETE_RESTAURANT';
-export const AUTH_REQUEST = "AUTH_REQUEST";
+export const REQUEST = "REQUEST";
+export const CHAT_USERS = "CHAT_USERS";
+export const GET_LISTS = "GET_LISTS";
+export const CREATE_LIST = "CREATE_LIST";
+export const DISPLAY_LIST = "DISPLAY_LIST";
+export const DISPLAY_SEARCH_RESULTS = "DISPLAY_SEARCH_RESULTS";
+export const DISPLAY_CURRENT_RESTAURANT = "DISPLAY_SEARCH_RESTAURANT";
+export const ADD_USER_NOTES = "ADD_USER_NOTES";
+export const DELETE_RESTAURANT = "DELETE_RESTAURANT";
 export const SET_AUTH_TOKEN = "SET_AUTH_TOKEN";
 export const AUTH_SUCCESS = "AUTH_SUCCESS";
 export const ERROR = "ERROR";
 
-
 /*Action Creators*/
 export const request = () => ({
   type: REQUEST
-});
-
-export const logUser = user => ({
-  type: LOG_USER,
-  user
 });
 
 export const chatUsers = users => ({
@@ -41,19 +31,9 @@ export const getLists = lists => ({
   lists
 });
 
-export const saveListName = listName => ({
-  type: SAVE_LIST_NAME,
-  listName
-});
-
 export const displayList = currentList => ({
   type: DISPLAY_LIST,
   currentList
-});
-
-export const deleteList = listId => ({
-  type: DELETE_LIST,
-  listId
 });
 
 export const displaySearchResults = searchResults => ({
@@ -82,10 +62,6 @@ export const fetchErr = err => ({
   err
 });
 
-export const authRequest = () => ({
-  type: AUTH_REQUEST
-});
-
 export const setAuthToken = authToken => ({
   type: SET_AUTH_TOKEN,
   authToken
@@ -104,7 +80,7 @@ export const storeAuthInfo = (authToken, dispatch, cb) => {
 };
 
 /*Action Functions*/
-export const login = (user,cb) => dispatch => {
+export const login = (user, cb) => dispatch => {
   dispatch(request());
   fetch(`${API_ORIGIN}/auth/login`, {
     method: "POST",
@@ -147,13 +123,14 @@ export const signupUser = user => dispatch => {
 };
 
 // Gets saved lists for a user
-export const getUserLists= (userId/*, token*/) => dispatch => {
+export const getUserLists = (userId /*, token*/) => dispatch => {
   dispatch(request());
   fetch(`${API_ORIGIN}/lists/user/${userId}`, {
     method: "GET",
     headers: {
-      "content-type": "application/json"
-    },
+      "content-type": "application/json",
+      Authorization: "Bearer "
+    }
   })
     .then(res => {
       if (!res.ok) {
@@ -170,7 +147,7 @@ export const getUserLists= (userId/*, token*/) => dispatch => {
 };
 
 //Verify no list exists with input name
-export const verifyNewList = (newList) => dispatch => {
+export const verifyNewList = newList => dispatch => {
   const { user, name } = newList;
   dispatch(request());
   fetch(`${API_ORIGIN}/addList/verify/${user}`, {
@@ -180,16 +157,18 @@ export const verifyNewList = (newList) => dispatch => {
     },
     body: JSON.stringify(name)
   })
-  .then(response => response.json())
-  .then(data => {
+    .then(response => response.json())
+    .then(data => {
       if (!data.result == isNull) {
-          alert('Sorry, there is already a list with that name. Please try a new one!');
+        alert(
+          "Sorry, there is already a list with that name. Please try a new one!"
+        );
       } else {
         addNewList(newList);
       }
-  })
-  .catch(error => console.error(error))
-}
+    })
+    .catch(error => console.error(error));
+};
 
 // addNewList adds a list to All Lists for a user
 export const addNewList = (newList, cb) => dispatch => {
@@ -208,26 +187,21 @@ export const addNewList = (newList, cb) => dispatch => {
       return res.json();
     })
     .then(res => {
-      cb()
+      cb();
     })
     .catch(err => {
       console.log(err);
     });
 };
 
-// Saves the name of a selected list to display individual list name
-export const saveSelectedList = (listName) => dispatch => {
-  dispatch(saveListName(listName));
-}
-
 // Gets a single list for a user
-export const getSingleList= (listId) => dispatch => {
+export const getSingleList = listId => dispatch => {
   dispatch(request());
   fetch(`${API_ORIGIN}/singleList/${listId}`, {
     method: "GET",
     headers: {
       "content-type": "application/json"
-    },
+    }
   })
     .then(res => {
       if (!res.ok) {
@@ -236,7 +210,6 @@ export const getSingleList= (listId) => dispatch => {
       return res.json();
     })
     .then(res => {
-      console.log(res);
       dispatch(displayList(res));
     })
     .catch(err => {
@@ -254,10 +227,7 @@ export const deleteIndividualList = (listId, cb) => dispatch => {
       "content-type": "application/json"
     }
   })
-    .then(res => {
-      dispatch(deleteList());
-    })
-    .than(cb())
+    .then(res => cb())
     .catch(err => {
       console.log(err);
     });
@@ -290,7 +260,6 @@ export const searchRestaurants = (cityId, term /*token*/) => dispatch => {
 // Pulls individual restaurant info for a selected restaurant from search
 export const pullRestaurantInfo = (id, token) => dispatch => {
   dispatch(request());
-  console.log(id);
   fetch(`${API_ORIGIN}/singleRestaurant/${id}`, {
     mode: "cors",
     headers: {
@@ -305,7 +274,6 @@ export const pullRestaurantInfo = (id, token) => dispatch => {
       return res.json();
     })
     .then(data => {
-      console.log(data);
       dispatch(displayCurrentRestaurant(data));
     })
     .catch(err => {
@@ -314,12 +282,12 @@ export const pullRestaurantInfo = (id, token) => dispatch => {
 };
 
 // Pulls individual restaurant info for a selected restaurant from a list
-export const getRestaurantInfoList = (restaurantId) => dispatch => {
+export const getRestaurantInfoList = restaurantId => dispatch => {
   dispatch(request());
   fetch(`${API_ORIGIN}/restaurant/${restaurantId}`, {
     mode: "cors",
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*"
       //Authorization: `Bearer ${token}`
     }
   })
@@ -339,7 +307,7 @@ export const getRestaurantInfoList = (restaurantId) => dispatch => {
 };
 
 // Adds user's notes to an individual restaurant
-export const postUserNotes = (listId, currentRestaurant, userNotes) => dispatch => {
+/*export const postUserNotes = (listId, currentRestaurant, userNotes) => dispatch => {
   const userNotesObj = {
     currentRestaurant,
     userNotes
@@ -359,21 +327,20 @@ export const postUserNotes = (listId, currentRestaurant, userNotes) => dispatch 
       return res.json();
     })
     .then(res => {
-      console.log(res);
       dispatch(addUserNotes(res));
     })
     .catch(err => {
       console.log(err);
     });
-};
+};*/
+
 // Gets all restaurants on a single list
-export const pullSingleList = (listId) => dispatch => {
+export const pullSingleList = listId => dispatch => {
   dispatch(request());
-  console.log(listId);
   fetch(`${API_ORIGIN}/singleList/${listId}`, {
     mode: "cors",
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*"
       //Authorization: `Bearer ${token}`
     }
   })
@@ -384,7 +351,6 @@ export const pullSingleList = (listId) => dispatch => {
       return res.json();
     })
     .then(data => {
-      console.log(data);
       dispatch(displayList(data));
     })
     .catch(err => {
@@ -393,14 +359,19 @@ export const pullSingleList = (listId) => dispatch => {
 };
 
 // Adds a single restaurant to an existing user list
-export const addRestaurantToList = (selectedList, currentRestaurant, userNotes, listName, cb) => dispatch => {
+export const addRestaurantToList = (
+  selectedList,
+  currentRestaurant,
+  userNotes,
+  listName,
+  cb
+) => dispatch => {
   const newRestaurant = {
     listId: selectedList,
     listName: listName,
     restaurantInfo: currentRestaurant,
     notes: userNotes
-  }
-  console.log(newRestaurant);
+  };
   dispatch(request());
   fetch(`${API_ORIGIN}/list/add/${selectedList}/${currentRestaurant.id}`, {
     method: "POST",

@@ -1,21 +1,30 @@
-import React from 'react';
-import Header from './header';
-import Nav from './nav';
-import {connect} from 'react-redux';
+import React from "react";
+import Header from "./header";
+import Nav from "./nav";
+import { connect } from "react-redux";
 
-export function ProfilePage(props) {
+export class ProfilePage extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
     return (
       <div>
         <Header />
         <div>
           <img src={require("../images/user.png")} id="profile-img" alt=" " />
         </div>
-        <h2>Hi Molly!</h2>
-        <p>You've visited 48 restaurants</p>
+        <h2>Hi {this.props.user.name}!</h2>
         <button>Log Out</button>
         <Nav />
       </div>
     );
+  }
 }
 
-export default connect()(ProfilePage);
+export const mapStateToProps = (state, props) => ({
+  user: state.user
+});
+
+export default connect(mapStateToProps)(ProfilePage);
