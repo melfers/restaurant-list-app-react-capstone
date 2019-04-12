@@ -51,7 +51,7 @@ export class LoginPage extends React.Component {
                 type="email"
                 className="loginForm signup"
                 ref={input => (this.email = input)}
-                value="elfers.molly@gmail.com"
+                defaultValue="elfers.molly@gmail.com"
                 required
               />
             </div>
@@ -61,7 +61,7 @@ export class LoginPage extends React.Component {
                 type="password"
                 className="loginForm signup"
                 ref={input => (this.password = input)}
-                value="hi"
+                defaultValue="hi"
                 required
               />
             </div>

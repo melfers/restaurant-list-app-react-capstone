@@ -298,7 +298,6 @@ export const getRestaurantInfoList = restaurantId => dispatch => {
       return res.json();
     })
     .then(res => {
-      console.log(res);
       dispatch(displayCurrentRestaurant(res));
     })
     .catch(err => {
