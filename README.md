@@ -47,35 +47,35 @@ As a user, I want to be able to search for restaurants to add to a list.
 
 **Landing Page**
 
-![Landing Page](designs/landing_page)
+![Landing Page](designs/landing_page.png)
 
 **Signup Page**
 
-![Signup Page](designs/signup_page)
+![Signup Page](designs/signup_page.png)
 
 **All Lists Page**
 
-![All Lists Page](designs/all_lists_page)
+![All Lists Page](designs/all_lists_page.png)
 
 **Add New List Page**
 
-![New List Page](designs/add_list_page)
+![New List Page](designs/add_list_page.png)
 
 **Individual Restaurant Page**
 
-![Individual Restaurant Page](designs/individual_restaurant_page)
+![Individual Restaurant Page](designs/individual_restaurant_page.png)
 
 **Individual List Page**
 
-![Individual List Page](designs/individual_list_page)
+![Individual List Page](designs/individual_list_page.png)
 
 **Search Page**
 
-![Search Page](designs/search_page)
+![Search Page](designs/search_page.png)
 
 **Profile Page**
 
-![Profile Page](designs/profile_page)
+![Profile Page](designs/user_profile_page.png)
 
 ## Technical
 
