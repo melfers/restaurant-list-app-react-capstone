@@ -1,18 +1,19 @@
 # Nom List
+
 An app that helps you track and rate restaurant visits.
 
 ### Working Prototype
 
-View React working prototype here: [Nom List](https://restaurant-list-react.herokuapp.com/) 
-View Node working prototype here: [Nom List](https://restaurant-list-node.herokuapp.com/) 
+View React working prototype here: [Nom List](https://restaurant-list-react.herokuapp.com/)
+View Node working prototype here: [Nom List](https://restaurant-list-node.herokuapp.com/)
 
-## Site Map: MVP 
+## Site Map: MVP
 
 ![Site Map](wireframes/site_map.jpg)
 
 ## UX & User Stories: MVP
 
-**All Lists** 
+**All Lists**
 
 As a user, I want to be able to view all the restaurant lists I've made, so that I can select a list to view.
 
@@ -44,51 +45,59 @@ As a user, I want to be able to search for restaurants to add to a list.
 
 ## Designs
 
-**Landing Page** 
+**Landing Page**
 
-![Landing Page](screenshots/landing_page.png)
+![Landing Page](designs/landing_page)
 
-**Signup Page** 
+**Signup Page**
 
-![Signup Page](screenshots/signup_page.png)
+![Signup Page](designs/signup_page)
 
-**All Plants Page** 
+**All Lists Page**
 
-![All Plants Page](screenshots/all_plants_page.png)
+![All Lists Page](designs/all_lists_page)
 
-**Add New Plant Page**
+**Add New List Page**
 
-![New Plant Page Wireframe](screenshots/new_plant_page.png)
+![New List Page](designs/add_list_page)
 
-**Individual Plant Page**
+**Individual Restaurant Page**
 
-![Individual Plant Page](screenshots/individual_plant_page.png)
+![Individual Restaurant Page](designs/individual_restaurant_page)
 
-**Edit Plant Page**
+**Individual List Page**
 
-![Edit Plant Page](screenshots/edit_plants_page.png)
+![Individual List Page](designs/individual_list_page)
+
+**Search Page**
+
+![Search Page](designs/search_page)
+
+**Profile Page**
+
+![Profile Page](designs/profile_page)
 
 ## Technical
 
-Green Thumb was built with: 
+Nom List was built with:
 
 **Front End**
 
-* HTML5
-* CSS3
-* JavaScript 
-* React
-* Redux
+- HTML5
+- CSS3
+- JavaScript
+- React
+- Redux
 
 **Back End**
 
-* Node.js 
-* Express.js
-* MongoDB
-* Mongoose
-* mLab database
-* Mocha and Chai for testing
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- mLab database
+- Mocha and Chai for testing
 
 **Responsive**
 
-This app is built to be responsive to smaller screen sizes using a media screen width breakpoint of 480px for smaller screen sizes. 
+This app is built to be responsive to smaller screen sizes using a media screen width breakpoint of 480px for smaller screen sizes.
