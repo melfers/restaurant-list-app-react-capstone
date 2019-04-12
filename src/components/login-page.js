@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import { connect } from 'react-redux';
-import { login } from '../actions';
-import { Redirect, Link } from 'react-router-dom';
+import { connect } from "react-redux";
+import { login } from "../actions";
+import { Redirect, Link } from "react-router-dom";
 
 export class LoginPage extends React.Component {
   constructor(props) {
@@ -17,23 +17,29 @@ export class LoginPage extends React.Component {
       email: this.email.value,
       password: this.password.value
     };
-    this.props.dispatch(login(user,(userID)=>{
-      this.props.history.replace(`/lists/user/${userID}`)
-    }));
-    inputs.map(input => (input.value=""));
+    this.props.dispatch(
+      login(user, userID => {
+        this.props.history.replace(`/lists/user/${userID}`);
+      })
+    );
+    inputs.map(input => (input.value = ""));
   }
 
   render() {
     if (this.props.loggedIn) {
-      return <Redirect to="/lists/user" />
+      return <Redirect to="/lists/user" />;
     }
 
     return (
       <section id="login-page">
         <div id="login-header">
-          <h1 className="second-header">N  </h1>
-          <img src={require("../images/donut.png")} className="sub-donut" alt=" " />
-          <h1 className="second-header">  M</h1>
+          <h1 className="second-header">N </h1>
+          <img
+            src={require("../images/donut.png")}
+            className="sub-donut"
+            alt=" "
+          />
+          <h1 className="second-header"> M</h1>
         </div>
         <h2>Log In</h2>
         <span className="error">{this.props.error}</span>
@@ -41,7 +47,7 @@ export class LoginPage extends React.Component {
           <fieldset>
             <div>
               <label htmlFor="email">Email:</label>
-              <input 
+              <input
                 type="email"
                 className="loginForm signup"
                 ref={input => (this.email = input)}
@@ -51,18 +57,19 @@ export class LoginPage extends React.Component {
             </div>
             <div>
               <label htmlFor="password">Password:</label>
-              <input 
+              <input
                 type="password"
-                className="loginForm"
+                className="loginForm signup"
                 ref={input => (this.password = input)}
-                className="signup"
                 value="hi"
                 required
               />
             </div>
           </fieldset>
           <div>
-            <button><Link to="/">Back</Link></button>
+            <button>
+              <Link to="/">Back</Link>
+            </button>
             <input type="submit" />
           </div>
         </form>
@@ -77,4 +84,4 @@ export const mapStateToProps = state => ({
   user: state.user
 });
 
-export default connect (mapStateToProps)(LoginPage);
+export default connect(mapStateToProps)(LoginPage);

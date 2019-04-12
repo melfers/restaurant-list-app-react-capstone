@@ -159,7 +159,7 @@ export const verifyNewList = newList => dispatch => {
   })
     .then(response => response.json())
     .then(data => {
-      if (!data.result == isNull) {
+      if (!data.result === isNull) {
         alert(
           "Sorry, there is already a list with that name. Please try a new one!"
         );

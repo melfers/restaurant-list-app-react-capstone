@@ -4,10 +4,6 @@ import Nav from "./nav";
 import { connect } from "react-redux";
 
 export class ProfilePage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div>

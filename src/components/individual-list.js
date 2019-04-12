@@ -7,10 +7,6 @@ import { Link } from "react-router-dom";
 import { pullSingleList, deleteIndividualList } from "../actions";
 
 export class IndividualList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     let { listId } = this.props.match.params;
     this.props.dispatch(pullSingleList(listId));

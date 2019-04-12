@@ -73,7 +73,7 @@ export class IndividualRestaurantSearch extends React.Component {
           <p>{this.props.currentRestaurant.location.address}</p>
           <p>{this.props.currentRestaurant.location.locality}</p>
           <p className="cuisines">{this.props.currentRestaurant.cuisines}</p>
-          {this.props.user != "" ? (
+          {this.props.user !== "" ? (
             <form onSubmit={e => this.onSubmit(e)}>
               <div className="edit-restaurant-info">
                 <label htmlFor="select" className="addListLabel">
