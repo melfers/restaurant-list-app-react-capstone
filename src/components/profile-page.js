@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./header";
 import Nav from "./nav";
 import { connect } from "react-redux";
+import { logOut } from "../actions";
 
 export class ProfilePage extends React.Component {
   logOut() {

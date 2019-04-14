@@ -27,7 +27,7 @@ export class LoginPage extends React.Component {
 
   render() {
     if (this.props.loggedIn) {
-      return <Redirect to="/lists/user" />;
+      return <Redirect to={`/lists/user/${this.props.user.id}`} />;
     }
 
     return (
