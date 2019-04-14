@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import { connect } from 'react-redux';
-import { signupUser } from '../actions';
-import { Redirect, Link } from 'react-router-dom';
+import { connect } from "react-redux";
+import { signupUser } from "../actions";
+import { Redirect, Link } from "react-router-dom";
 
 export class SignupPage extends React.Component {
   constructor(props) {
@@ -19,7 +19,7 @@ export class SignupPage extends React.Component {
       password: this.password.value
     };
     this.props.dispatch(signupUser(user));
-    inputs.map(input => (input.value =""));
+    inputs.map(input => (input.value = ""));
   }
 
   render() {
@@ -29,50 +29,50 @@ export class SignupPage extends React.Component {
     return (
       <section id="signupPage">
         <div id="login-header">
-          <h1 className="second-header">N  </h1>
-          <img src={require("../images/donut.png")} className="sub-donut" alt=" " />
-          <h1 className="second-header">  M</h1>
+          <h1 className="second-header">N </h1>
+          <img
+            src={require("../images/donut.png")}
+            className="sub-donut"
+            alt=" "
+          />
+          <h1 className="second-header"> M</h1>
         </div>
         <h2>Sign Up</h2>
         <form onSubmit={this.onSubmit}>
           <fieldset>
             <label htmlFor="name">Name:</label>
             <input
-              type="text" 
+              type="text"
               ref={input => (this.name = input)}
               className="signup"
-              value="Henry"
-              required 
+              required
             />
             <label htmlFor="email">Email:</label>
             <input
-            type="email" 
-            ref={input => (this.email = input)}
-            className="signup"
-            value="henry@email.com"
-            required 
+              type="email"
+              ref={input => (this.email = input)}
+              className="signup"
+              required
             />
             <label htmlFor="password">Password</label>
             <input
-              type="password" 
+              type="password"
               ref={input => (this.password = input)}
               className="signup"
-              value="Henry"
-              required 
+              required
             />
             <label htmlFor="reEnterPassword">Re-Enter Password</label>
-            <input 
+            <input
               type="password"
               ref={input => (this.password2 = input)}
               className="signup"
-              value="Henry"
               required
             />
             <div>
-              <button><Link to="/">Back</Link></button>
-              <input 
-                type="submit"
-               />
+              <button>
+                <Link to="/">Back</Link>
+              </button>
+              <input type="submit" />
             </div>
           </fieldset>
         </form>

@@ -4,6 +4,14 @@ import Nav from "./nav";
 import { connect } from "react-redux";
 
 export class ProfilePage extends React.Component {
+  logOut() {
+    this.props.dispatch(
+      logOut(() => {
+        this.props.history.push(`/`);
+      })
+    );
+  }
+
   render() {
     return (
       <div>
@@ -12,7 +20,7 @@ export class ProfilePage extends React.Component {
           <img src={require("../images/user.png")} id="profile-img" alt=" " />
         </div>
         <h2>Hi {this.props.user.name}!</h2>
-        <button>Log Out</button>
+        <button onClick={e => this.logOut()}>Log Out</button>
         <Nav />
       </div>
     );

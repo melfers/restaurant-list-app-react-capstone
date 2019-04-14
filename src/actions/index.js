@@ -4,7 +4,6 @@ import { isNull } from "util";
 
 /* Action Types */
 export const REQUEST = "REQUEST";
-export const CHAT_USERS = "CHAT_USERS";
 export const GET_LISTS = "GET_LISTS";
 export const CREATE_LIST = "CREATE_LIST";
 export const DISPLAY_LIST = "DISPLAY_LIST";
@@ -15,15 +14,11 @@ export const DELETE_RESTAURANT = "DELETE_RESTAURANT";
 export const SET_AUTH_TOKEN = "SET_AUTH_TOKEN";
 export const AUTH_SUCCESS = "AUTH_SUCCESS";
 export const ERROR = "ERROR";
+export const LOG_OUT = "LOG_OUT";
 
 /*Action Creators*/
 export const request = () => ({
   type: REQUEST
-});
-
-export const chatUsers = users => ({
-  type: CHAT_USERS,
-  users
 });
 
 export const getLists = lists => ({
@@ -78,6 +73,10 @@ export const storeAuthInfo = (authToken, dispatch, cb) => {
   dispatch(authSuccess(decodedToken));
   cb(decodedToken.id);
 };
+
+export const logUserOut = () => ({
+  type: LOG_OUT
+});
 
 /*Action Functions*/
 export const login = (user, cb) => dispatch => {
@@ -408,4 +407,10 @@ export const deleteRestaurantFromList = (currentRestaurant, cb) => dispatch => {
     .catch(err => {
       console.log(err);
     });
+};
+
+//Logs a user out
+export const logOut = cb => dispatch => {
+  dispatch(logUserOut());
+  cb();
 };

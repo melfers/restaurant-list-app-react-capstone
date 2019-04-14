@@ -20,14 +20,6 @@ export const reducer = (state = initialState, action) => {
     });
   }
 
-  /*if (action.type === actions.LOG_USER) {
-    return Object.assign({}, state, {
-        error: null,
-        loading: false,
-        user: action.user
-    });
-    }*/
-
   if (action.type === actions.SET_AUTH_TOKEN) {
     return Object.assign({}, state, {
       authToken: action.authToken,
@@ -80,6 +72,20 @@ export const reducer = (state = initialState, action) => {
     return Object.assign({}, state, {
       loading: false,
       currentRestaurant: []
+    });
+  }
+
+  if (action.type === actions.LOG_OUT) {
+    return Object.assign({}, state, {
+      authToken: "",
+      user: "",
+      error: null,
+      loading: false,
+      userLists: [],
+      currentList: [],
+      searchResults: [],
+      currentRestaurant: [],
+      restaurantUserNotes: []
     });
   }
 
