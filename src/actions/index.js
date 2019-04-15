@@ -68,10 +68,13 @@ export const authSuccess = currentUser => ({
 });
 
 export const storeAuthInfo = (authToken, dispatch, cb) => {
+  console.log("storeAuthInfo", authToken);
   const decodedToken = jwtDecode(authToken);
   dispatch(setAuthToken(authToken));
   dispatch(authSuccess(decodedToken));
+  console.log("before callback");
   cb(decodedToken.id);
+  console.log("after callback");
 };
 
 export const logUserOut = () => ({
@@ -100,7 +103,8 @@ export const login = (user, cb) => dispatch => {
     });
 };
 
-export const signupUser = user => dispatch => {
+export const signupUser = (user, cb) => dispatch => {
+  console.log("signup");
   dispatch(request());
   fetch(`${API_ORIGIN}/auth/signup`, {
     method: "POST",
@@ -115,7 +119,7 @@ export const signupUser = user => dispatch => {
       }
       return res.json();
     })
-    .then(authToken => storeAuthInfo(authToken.token, dispatch))
+    .then(authToken => storeAuthInfo(authToken.token, dispatch, cb))
     .catch(err => {
       dispatch(fetchErr(err));
     });

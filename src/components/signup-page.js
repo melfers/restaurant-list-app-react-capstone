@@ -18,7 +18,14 @@ export class SignupPage extends React.Component {
       email: this.email.value,
       password: this.password.value
     };
-    this.props.dispatch(signupUser(user));
+    this.props.dispatch(
+      signupUser(user, userID => {
+        console.log("callback success");
+        this.props.history.push("/auth/login");
+      })
+    );
+
+    console.log("signup user action dispatched");
     inputs.map(input => (input.value = ""));
   }
 
