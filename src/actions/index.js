@@ -68,13 +68,10 @@ export const authSuccess = currentUser => ({
 });
 
 export const storeAuthInfo = (authToken, dispatch, cb) => {
-  console.log("storeAuthInfo", authToken);
   const decodedToken = jwtDecode(authToken);
   dispatch(setAuthToken(authToken));
   dispatch(authSuccess(decodedToken));
-  console.log("before callback");
   cb(decodedToken.id);
-  console.log("after callback");
 };
 
 export const logUserOut = () => ({
