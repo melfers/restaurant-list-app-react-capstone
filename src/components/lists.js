@@ -27,7 +27,18 @@ export class Lists extends React.Component {
       listArray = "";
     }
 
-    return <ul className="list">{listArray}</ul>;
+    return (
+      <div>
+        {this.props.userLists.length ? (
+          <ul className="list">{listArray}</ul>
+        ) : (
+          <p>
+            Start by creating a list to add restaurants to by clicking the
+            button below.
+          </p>
+        )}
+      </div>
+    );
   }
 }
 
