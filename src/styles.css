@@ -4,121 +4,202 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /*Begin CSS*/
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Quicksand', sans-serif;
-    font-size: 20px;
-    color: #444;
-    text-align: center;
-    padding-bottom: 60px;
+  font-family: "Quicksand", sans-serif;
+  font-size: 20px;
+  color: #444;
+  text-align: center;
+  padding-bottom: 60px;
 }
 
 section {
-    max-width: 50%;
-    margin: auto;
+  margin: auto;
 }
 
-ul, ol {
-    list-style-type: none;
-    padding-left: 0;
+ul,
+ol {
+  list-style-type: none;
+  padding-left: 0;
 }
 
 ul li {
-    display: inline;
+  display: inline;
 }
 
 a {
-    text-decoration: none;
-    all: unset;
+  text-decoration: none;
+  all: unset;
 }
 
 p {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 header {
-    font-family: 'Coiny';
-    color: #E5D0CC;
-    background-color: #444554;
-    height: 35px;
-    padding: 0;
-    margin: 0;
+  font-family: "Coiny";
+  color: #e5d0cc;
+  background-color: #444554;
+  height: 35px;
+  padding: 0;
+  margin: 0;
 }
 
 label {
-    display: block;
-    text-align: left;
-    font-size: 14px;
+  display: block;
+  text-align: left;
+  font-size: 14px;
 }
 
 #header-donut {
-    height: 25px;
+  height: 25px;
 }
 
 .header-letters {
-    display: inline-block;
-    padding: 2px;
+  display: inline-block;
+  padding: 2px;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 h1 {
-    font-family: 'Coiny', cursive;
+  font-family: "Coiny", cursive;
 }
 
 h2 {
-    font-size: 30px;
-    padding: 5px;
+  font-size: 30px;
+  padding: 5px;
 }
 
 /*input[type=text] {
@@ -129,226 +210,232 @@ h2 {
     margin: 5px;
 }*/
 
-fieldset { 
-    width: 55%;
-    margin: auto;
+fieldset {
+  width: 55%;
+  margin: auto;
 }
 
 .signup {
-    width: 100%;
-    height: 40px;
-    border: .5px solid lightgray;
-    border-radius: 5px;
-    margin: 5px;
+  width: 100%;
+  height: 40px;
+  border: 0.5px solid lightgray;
+  border-radius: 5px;
+  margin: 5px;
 }
 
 .search {
-    height: 40px;
-    width: 50%;
-    border: .5px solid lightgray;
-    border-radius: 5px;
-    padding-top: 7px;
+  height: 40px;
+  width: 50%;
+  border: 0.5px solid lightgray;
+  border-radius: 5px;
+  padding-top: 7px;
 }
 
 input::placeholder {
-    font-size: 15px;
-    font-family: 'Quicksand'
+  font-size: 15px;
+  font-family: "Quicksand";
 }
 
 #landing-header {
-    padding-top: 10%;
-    color: #444554;
-    font-size: 60px;
+  padding-top: 10%;
+  color: #444554;
+  font-size: 60px;
 }
 
 #main-donut {
-    height: 200px;
-    display: block;
-    margin: auto;
-    margin-bottom: 20px;
+  height: 200px;
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
 }
 
 h4 {
-    color: #172121;
-    margin: 15px;
+  color: #172121;
+  margin: 15px;
 }
 
-button, input[type=submit] {
-    background-color: #444554;
-    color: #E5D0CC;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 20px;
-    border: none;
-    border-radius: 5px;
-    padding: 7px 20px;
-    width: 115px;
-    margin: 15px;
+button,
+input[type="submit"] {
+  background-color: #444554;
+  color: #e5d0cc;
+  font-family: "Quicksand", sans-serif;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  padding: 7px 20px;
+  width: 115px;
+  margin: 15px;
 }
 
 #main-nav {
-    position: fixed;
-    bottom: 0;
-    background-color: #BFACB5;
-    height: 50px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 5px;
-    margin: 0;
+  position: fixed;
+  bottom: 0;
+  background-color: #bfacb5;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  margin: 0;
 }
 
-#main-nav input[type=text] {
-    padding: 5px;
-    font-family: 'Quicksand', sans-serif;
+#main-nav input[type="text"] {
+  padding: 5px;
+  font-family: "Quicksand", sans-serif;
 }
 
 #main-nav img {
-    height: 35px;
-    padding-top: 7px;
+  height: 35px;
+  padding-top: 7px;
 }
 
 #login-header {
-    display: flex;
-    margin-top: 50px;
-    margin-bottom: 25px;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  margin-top: 50px;
+  margin-bottom: 25px;
+  align-items: center;
+  justify-content: center;
 }
 
 .sub-donut {
-    height: 75px;
+  height: 75px;
 }
 
 .second-header {
-    display: inline-block;
-    font-size: 60px;
-    color: #444554;
+  display: inline-block;
+  font-size: 60px;
+  color: #444554;
 }
 
 .lists li {
-    display: block;
-    font-size: 35px;
-    text-align: left;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 15px;
-    border: .5px solid lightgrey;
-    min-height: 150px;
+  display: block;
+  font-size: 35px;
+  text-align: left;
+  margin: 10px auto;
+  padding: 15px;
+  border: 0.5px solid lightgrey;
+  min-height: 150px;
+  max-width: 85%;
 }
 
 #add-list-form .signup {
-    display: block;
-    margin: 15px auto;
-    width: 30%;
+  display: block;
+  margin: 15px auto;
+  width: 80%;
 }
 
 .restaurant-card p {
-    padding: 5px;
+  padding: 5px;
 }
 
 .individual-restaurant-img {
-    height: 200px;
-    border-radius: 5px;
-    margin: 10px;
+  height: 200px;
+  border-radius: 5px;
+  margin: 10px;
 }
 
 .single-restaurant p {
-    padding: 5px;
+  padding: 5px;
 }
 
 .back-button {
-    height: 30px;
-    float: left;
+  height: 30px;
+  float: left;
 }
 
 .save-button {
-    display: inline-block;
-    margin: 10px auto !important;
+  display: inline-block;
+  margin: 10px auto !important;
 }
 
 textarea {
-    width: 60%;
-    height: 50px;
-    border: .5px lightgrey solid;
-    border-radius: 3px;
+  width: 60%;
+  height: 50px;
+  border: 0.5px lightgrey solid;
+  border-radius: 3px;
 }
 
 #profile-img {
-    height: 100px;
+  height: 100px;
 }
 
 select {
-    height: 40px;
-    border: .5px solid lightgray;
-    border-radius: 5px;
-    margin: 15px;
-    width: 125px;
-    font-size: 15px;
+  height: 40px;
+  border: 0.5px solid lightgray;
+  border-radius: 5px;
+  margin: 15px;
+  width: 125px;
+  font-size: 15px;
 }
 
 .addListLabel {
-    padding-left: 40%;
-    margin-top: 20px;
+  padding-left: 40%;
+  margin-top: 20px;
 }
 
 #top-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0px;
 }
 
 header {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .restaurant-container {
-    overflow: hidden;
-    display: table;
+  overflow: hidden;
+  display: table;
 }
 
 .restaurant-img-container {
-    vertical-align: middle;
-    display: table-cell;
+  vertical-align: middle;
+  display: table-cell;
 }
 
 .rest-info {
-    display: table-cell;
-    padding-left: 20px;
+  display: table-cell;
+  padding-left: 20px;
 }
 
 .thumbImg {
-    width: 105px;
-    border-radius: 5px;
-    height: 105px;
+  width: 105px;
+  border-radius: 5px;
+  height: 105px;
 }
 
 .cuisines {
-    font-style: italic;
+  font-style: italic;
 }
 
 .select-list {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .list li {
-    background-color: #E5D0CC;
-    text-align: center;
-    width: 80%;
-    padding-top: 3%;
-    border-radius: 3px;
-    margin: auto;
-    margin-top: 10px;
-    min-height: 110px;
+  background-color: #e5d0cc;
+  text-align: center;
+  width: 80%;
+  padding-top: 3%;
+  border-radius: 3px;
+  margin: auto;
+  margin-top: 10px;
+  min-height: 110px;
 }
 
+//@media screen and (min-width: 600px) {
+    /* For desktop: */
+    section {
+        width: 50%;
+    }
 
+    #add-list-form .signup {
+        width: 30%;
+    }
 
-
-
-
-
-
-
-
-
+    .lists li {
+        max-width: 50%;
+    }
+  }
+  
