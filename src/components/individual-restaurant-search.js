@@ -26,11 +26,14 @@ export class IndividualRestaurantSearch extends React.Component {
   onSubmit(e) {
     e.preventDefault();
     const currentRestaurant = this.props.currentRestaurant;
+
     const listName = document
       .querySelector(`option[value="${this.listAdd.value}"]`)
       .getAttribute("name");
     const userNotes = "";
     const selectedList = this.listAdd.value;
+
+    console.log(listName, currentRestaurant, selectedList);
 
     this.props.dispatch(
       addRestaurantToList(

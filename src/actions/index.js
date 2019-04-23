@@ -69,6 +69,7 @@ export const authSuccess = currentUser => ({
 
 export const storeAuthInfo = (authToken, dispatch, cb) => {
   const decodedToken = jwtDecode(authToken);
+  localStorage.setItem("authToken", authToken);
   dispatch(setAuthToken(authToken));
   dispatch(authSuccess(decodedToken));
   cb(decodedToken.id);
@@ -98,6 +99,12 @@ export const login = (user, cb) => dispatch => {
     .catch(err => {
       dispatch(fetchErr(err));
     });
+};
+
+export const refreshUser = () => dispatch => {
+  dispatch(request());
+  let authToken = localStorage.getItem("authToken");
+  storeAuthInfo(authToken, dispatch, () => {});
 };
 
 export const signupUser = (user, cb) => dispatch => {
@@ -412,6 +419,7 @@ export const deleteRestaurantFromList = (currentRestaurant, cb) => dispatch => {
 
 //Logs a user out
 export const logOut = cb => dispatch => {
+  localStorage.clear();
   dispatch(logUserOut());
   cb();
 };

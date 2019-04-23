@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { getRestaurantInfoList, deleteRestaurantFromList } from "../actions";
 
 export class IndividualRestaurant extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     let { restaurantId } = this.props.match.params;
     this.props.dispatch(getRestaurantInfoList(restaurantId));
   }
@@ -29,31 +29,38 @@ export class IndividualRestaurant extends React.Component {
     return (
       <div>
         <Header />
-        <section className="single-restaurant">
-          <h2>{this.props.currentRestaurant.name}</h2>
-          <div id="img-placeholder">
-            <img
-              src={finalImage}
-              className="individual-restaurant-img"
-              alt="featured-restaurant"
-            />
-          </div>
-          <p>
-            {this.props.currentRestaurant.location !== undefined
-              ? this.props.currentRestaurant.location.address
-              : ""}
-          </p>
-          <p>
-            {this.props.currentRestaurant.location !== undefined
-              ? this.props.currentRestaurant.location.locality
-              : ""}
-          </p>
-          <p className="cuisines">{this.props.currentRestaurant.cuisines}</p>
-          <Link to={`/singleList/${this.props.currentRestaurant.listId}`}>
-            <button>Back</button>
-          </Link>
-          <button onClick={e => this.deleteSelectedRestaurant()}>Delete</button>
-        </section>
+        {this.props.currentRestaurant._id ==
+        this.props.match.params.restaurantId ? (
+          <section className="single-restaurant">
+            <h2>{this.props.currentRestaurant.name}</h2>
+            <div id="img-placeholder">
+              <img
+                src={finalImage}
+                className="individual-restaurant-img"
+                alt="featured-restaurant"
+              />
+            </div>
+            <p>
+              {this.props.currentRestaurant.location !== undefined
+                ? this.props.currentRestaurant.location.address
+                : ""}
+            </p>
+            <p>
+              {this.props.currentRestaurant.location !== undefined
+                ? this.props.currentRestaurant.location.locality
+                : ""}
+            </p>
+            <p className="cuisines">{this.props.currentRestaurant.cuisines}</p>
+            <Link to={`/singleList/${this.props.currentRestaurant.listId}`}>
+              <button>Back</button>
+            </Link>
+            <button onClick={e => this.deleteSelectedRestaurant()}>
+              Delete
+            </button>
+          </section>
+        ) : (
+          "Loading Restaurant"
+        )}
         <Nav />
       </div>
     );

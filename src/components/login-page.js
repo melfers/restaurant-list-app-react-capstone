@@ -26,7 +26,7 @@ export class LoginPage extends React.Component {
   }
 
   render() {
-    if (this.props.loggedIn) {
+    if (this.props.user) {
       return <Redirect to={`/lists/user/${this.props.user.id}`} />;
     }
 
@@ -79,7 +79,6 @@ export class LoginPage extends React.Component {
 }
 
 export const mapStateToProps = state => ({
-  loggedIn: state.user,
   error: state.error,
   user: state.user
 });

@@ -13,14 +13,31 @@ import ProfilePage from "./components/profile-page";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
+import { refreshUser } from "./actions/index";
 
 class NomApp extends Component {
+  componentDidMount() {
+    if (!this.props.user && localStorage.getItem) {
+      refreshUser();
+      console.log("refershUser ran");
+    }
+  }
+
   render() {
     return (
       <Router>
         <div>
           <main role="main">
-            <Route exact path="/" component={LandingPage} />
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <LandingPage
+                  loggedIn={this.props.authToken}
+                  user={this.props.user.id}
+                />
+              )}
+            />
             <Route exact path="/auth/signup" component={SignupPage} />
             <Route exact path="/auth/login" component={LoginPage} />
             <Route
@@ -28,7 +45,6 @@ class NomApp extends Component {
               render={() => (
                 <AllLists
                   error={this.props.error}
-                  loggedIn={this.props.loggedIn}
                   userLists={this.props.userLists}
                 />
               )}
@@ -53,9 +69,10 @@ class NomApp extends Component {
 }
 
 export const mapStateToProps = state => ({
-  loggedIn: state.user,
   error: state.error,
-  userLists: state.userLists
+  userLists: state.userLists,
+  user: state.user,
+  authToken: state.authToken
 });
 
 export default connect(mapStateToProps)(NomApp);

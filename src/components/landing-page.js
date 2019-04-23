@@ -1,8 +1,11 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
-export default function LandingPage() {
+export default function LandingPage(props) {
+  if (props.loggedIn) {
+    return <Redirect to={`/lists/user/${props.user}`} />;
+  }
   return (
     <div>
       <h1 id="landing-header">Nom List</h1>
