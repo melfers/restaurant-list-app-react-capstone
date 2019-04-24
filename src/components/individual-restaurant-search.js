@@ -64,44 +64,49 @@ export class IndividualRestaurantSearch extends React.Component {
     return this.props.currentRestaurant.location !== undefined ? (
       <div>
         <Header />
-        <section className="single-restaurant">
-          <h2>{this.props.currentRestaurant.name}</h2>
-          <div id="img-placeholder">
-            <img
-              src={finalImage}
-              className="individual-restaurant-img"
-              alt="featured-restaurant"
-            />
-          </div>
-          <p>{this.props.currentRestaurant.location.address}</p>
-          <p>{this.props.currentRestaurant.location.locality}</p>
-          <p className="cuisines">{this.props.currentRestaurant.cuisines}</p>
-          {this.props.user !== "" ? (
-            <form onSubmit={e => this.onSubmit(e)}>
-              <div className="edit-restaurant-info">
-                <label htmlFor="select" className="addListLabel">
-                  Add to list:
-                </label>
-                <select
-                  className="select-list"
-                  ref={input => (this.listAdd = input)}
-                >
-                  {searchList}
-                </select>
-              </div>
-              <div>
-                <button>
-                  <Link to="/search">Back</Link>
-                </button>
-                <input type="submit" value="Save" id="save-search" />
-              </div>
-            </form>
-          ) : (
-            <Link to="/auth/login">
-              <button className="save-button">Log In to Save</button>
-            </Link>
-          )}
-        </section>
+        {this.props.currentRestaurant._id ===
+        this.props.match.params.restaurantId ? (
+          <section className="single-restaurant">
+            <h2>{this.props.currentRestaurant.name}</h2>
+            <div id="img-placeholder">
+              <img
+                src={finalImage}
+                className="individual-restaurant-img"
+                alt="featured-restaurant"
+              />
+            </div>
+            <p>{this.props.currentRestaurant.location.address}</p>
+            <p>{this.props.currentRestaurant.location.locality}</p>
+            <p className="cuisines">{this.props.currentRestaurant.cuisines}</p>
+            {this.props.user !== "" ? (
+              <form onSubmit={e => this.onSubmit(e)}>
+                <div className="edit-restaurant-info">
+                  <label htmlFor="select" className="addListLabel">
+                    Add to list:
+                  </label>
+                  <select
+                    className="select-list"
+                    ref={input => (this.listAdd = input)}
+                  >
+                    {searchList}
+                  </select>
+                </div>
+                <div>
+                  <button>
+                    <Link to="/search">Back</Link>
+                  </button>
+                  <input type="submit" value="Save" id="save-search" />
+                </div>
+              </form>
+            ) : (
+              <Link to="/auth/login">
+                <button className="save-button">Log In to Save</button>
+              </Link>
+            )}
+          </section>
+        ) : (
+          "Loading Restaurant..."
+        )}
         <Nav />
       </div>
     ) : (

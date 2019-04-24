@@ -105,10 +105,11 @@ export const refreshUser = () => dispatch => {
   dispatch(request());
   let authToken = localStorage.getItem("authToken");
   storeAuthInfo(authToken, dispatch, () => {});
+  const decodedToken = jwtDecode(authToken);
+  dispatch(getUserLists(decodedToken.id));
 };
 
 export const signupUser = (user, cb) => dispatch => {
-  console.log("signup");
   dispatch(request());
   fetch(`${API_ORIGIN}/auth/signup`, {
     method: "POST",

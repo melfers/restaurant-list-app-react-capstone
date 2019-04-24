@@ -424,18 +424,31 @@ header {
   min-height: 110px;
 }
 
-//@media screen and (min-width: 600px) {
-    /* For desktop: */
-    section {
-        width: 50%;
-    }
+.navText {
+  display: none;
+}
 
-    #add-list-form .signup {
-        width: 30%;
-    }
-
-    .lists li {
-        max-width: 50%;
-    }
+@media screen and (min-width: 600px) {
+  /* For desktop: */
+  section {
+    width: 50%;
   }
-  
+
+  #add-list-form .signup {
+    width: 30%;
+  }
+
+  .lists li {
+    max-width: 70%;
+  }
+
+  .navText {
+    display: block;
+    font-size: 20px;
+    padding: 3px;
+  }
+
+  #main-nav {
+    height: 80px;
+  }
+}

@@ -18,16 +18,19 @@ export class Nav extends React.Component {
             <li>
               <Link to="/user">
                 <img src={require("../images/user.png")} alt=" " />
+                <p className="navText">Profile</p>
               </Link>
             </li>
             <li>
               <Link to="/search">
                 <img src={require("../images/magnifier.png")} alt=" " />
+                <p className="navText">Search</p>
               </Link>
             </li>
             <li>
               <Link to={`/lists/user/${this.props.user.id}`}>
                 <img src={require("../images/list.png")} alt=" " />
+                <p className="navText">Lists</p>
               </Link>
             </li>
           </ul>

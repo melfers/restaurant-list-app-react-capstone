@@ -1,15 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getUserLists } from "../actions";
 
 import { Link } from "react-router-dom";
 
 export class Lists extends React.Component {
-  componentDidMount() {
-    let userId = this.props.user.id;
-    this.props.dispatch(getUserLists(userId));
-  }
-
   render() {
     let listArray = [];
 

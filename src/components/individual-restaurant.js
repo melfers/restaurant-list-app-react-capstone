@@ -29,7 +29,7 @@ export class IndividualRestaurant extends React.Component {
     return (
       <div>
         <Header />
-        {this.props.currentRestaurant._id ==
+        {this.props.currentRestaurant._id ===
         this.props.match.params.restaurantId ? (
           <section className="single-restaurant">
             <h2>{this.props.currentRestaurant.name}</h2>
@@ -59,7 +59,7 @@ export class IndividualRestaurant extends React.Component {
             </button>
           </section>
         ) : (
-          "Loading Restaurant"
+          "Loading Restaurant..."
         )}
         <Nav />
       </div>

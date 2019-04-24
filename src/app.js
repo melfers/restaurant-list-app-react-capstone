@@ -18,8 +18,7 @@ import { refreshUser } from "./actions/index";
 class NomApp extends Component {
   componentDidMount() {
     if (!this.props.user && localStorage.getItem) {
-      refreshUser();
-      console.log("refershUser ran");
+      this.props.dispatch(refreshUser());
     }
   }
 
