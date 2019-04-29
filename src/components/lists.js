@@ -3,7 +3,17 @@ import { connect } from "react-redux";
 
 import { Link } from "react-router-dom";
 
+import { getUserLists, refreshUser } from "../actions";
+
 export class Lists extends React.Component {
+  componentDidMount() {
+    if (!this.props.user && localStorage.getItem) {
+      this.props.dispatch(refreshUser());
+    } else {
+      this.props.dispatch(getUserLists(this.props.user.id));
+    }
+  }
+
   render() {
     let listArray = [];
 

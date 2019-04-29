@@ -104,9 +104,11 @@ export const login = (user, cb) => dispatch => {
 export const refreshUser = () => dispatch => {
   dispatch(request());
   let authToken = localStorage.getItem("authToken");
-  storeAuthInfo(authToken, dispatch, () => {});
-  const decodedToken = jwtDecode(authToken);
-  dispatch(getUserLists(decodedToken.id));
+  if (authToken) {
+    storeAuthInfo(authToken, dispatch, () => {});
+    const decodedToken = jwtDecode(authToken);
+    dispatch(getUserLists(decodedToken.id));
+  }
 };
 
 export const signupUser = (user, cb) => dispatch => {
