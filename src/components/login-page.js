@@ -67,9 +67,9 @@ export class LoginPage extends React.Component {
             </div>
           </fieldset>
           <div>
-            <button>
-              <Link to="/">Back</Link>
-            </button>
+            <Link to="/">
+              <button>Back</button>
+            </Link>
             <input type="submit" />
           </div>
         </form>

@@ -73,9 +73,9 @@ export class SignupPage extends React.Component {
               required
             />
             <div>
-              <button>
-                <Link to="/">Back</Link>
-              </button>
+              <Link to="/">
+                <button>Back</button>
+              </Link>
               <input type="submit" />
             </div>
           </fieldset>
