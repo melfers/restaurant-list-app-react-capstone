@@ -158,7 +158,7 @@ ul li {
 
 a {
   text-decoration: none;
-  all: unset;
+  /*all: unset;*/
 }
 
 p {
@@ -256,8 +256,8 @@ h4 {
 
 button,
 input[type="submit"] {
-  background-color: #444554;
   color: #e5d0cc;
+  background-color: #444554;
   font-family: "Quicksand", sans-serif;
   font-size: 20px;
   border: none;
