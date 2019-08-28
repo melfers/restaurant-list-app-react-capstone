@@ -34,8 +34,8 @@ export class IndividualList extends React.Component {
             ? restaurant.thumb
             : require("../images/stock-donut.jpg");
         return (
-          <Link to={`/restaurant/${restaurant._id}`}>
-            <li className="restaurant-card" id={restaurant._id} key={index}>
+          <Link to={`/restaurant/${restaurant._id}`} key={index}>
+            <li className="restaurant-card" id={restaurant._id}>
               <div className="restaurant-container">
                 <div className="restaurant-img-container">
                   <img src={finalImage} alt="thumbnail" className="thumbImg" />

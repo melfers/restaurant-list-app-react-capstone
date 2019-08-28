@@ -92,9 +92,9 @@ export class IndividualRestaurantSearch extends React.Component {
                   </select>
                 </div>
                 <div>
-                  <button>
-                    <Link to="/search">Back</Link>
-                  </button>
+                  <Link to="/search">
+                    <button>Back</button>
+                  </Link>
                   <input type="submit" value="Save" id="save-search" />
                 </div>
               </form>
