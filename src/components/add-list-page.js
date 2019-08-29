@@ -47,9 +47,9 @@ export class AddList extends React.Component {
             ref={input => (this.description = input)}
             required
           />
-          <button>
-            <Link to="/lists/user/:id">Back</Link>
-          </button>
+          <Link to="/lists/user/:id">
+            <button>Back</button>
+          </Link>
           <input type="submit" value="Save" />
         </form>
         <Nav />
